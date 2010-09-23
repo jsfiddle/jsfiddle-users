@@ -59,6 +59,6 @@ Example
 
 http://jsfiddle.net/api/user/zalun/demo/list.json?callback=Api&sort=framework&start=5&limit=5
 
-Ryan (@ryanflorence) started to write a proper class supporting these features. Piotr (@zalun) edited it.
-http://jsfiddle.net/rpflorence/49rxW/
-For a more advance usage: http://jsfiddle.net/zalun/49rxW/9/`
+Sample implementation by Ryan (`@ryanflorence <twitter.com/ryanflorence>`_) 
+and Piotr (`@zalun <twitter.com/zalun>`_): http://jsfiddle.net/rpflorence/49rxW/, 
+for more advanced usage: http://jsfiddle.net/zalun/49rxW/9/

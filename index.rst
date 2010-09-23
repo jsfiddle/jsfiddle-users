@@ -27,6 +27,7 @@ Contents:
    api/index.rst
    framework_support.srt
 
+* :ref:`genindex`
 * :ref:`search`
 
 .. [Interview] http://davidwalsh.name/jsfiddle-interview 
