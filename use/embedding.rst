@@ -30,12 +30,12 @@ Getting the code
 
 .. image:: /_static/share_embed.png
 
-Basic funcitonality is provided in the :menuselection:`Share --> Embedded` menu for easy access. It contains the 
+Basic funcitonality is provided in the :menuselection:`Share --> Embed on your page` menu for easy access. It contains the 
 default URL for the fiddle wrapped in **iframe** code.
 
 
-Example
-=======
+Tutorial
+========
 
 The fiddle http://jsfiddle.net/zalun/NmudS/ will provide following code:
 
@@ -46,13 +46,40 @@ The fiddle http://jsfiddle.net/zalun/NmudS/ will provide following code:
      src="http://jsfiddle.net/zalun/NmudS/embedded/">
    </iframe>
 
-Which will result with following embed
 
+There are 4 tabs as no external resource was used in the fiddle: js, html, css and result.
 
 .. raw:: html
 
    <iframe 
-     style="width: 100%; height: 300px" 
+     style="width: 100%; height: 210px" 
      src="http://jsfiddle.net/zalun/NmudS/embedded/">
    </iframe>
 
+Changing Tabs
+-------------
+
+In example if to show the result as the first tab add ``result,js,html,css/`` to the ``URL``: ``src="http://jsfiddle.net/zalun/NmudS/embedded/result,js,html,css/"``
+
+.. raw:: html
+
+   <iframe 
+     style="width: 100%; height: 210px" 
+     src="http://jsfiddle.net/zalun/NmudS/embedded/result,js,html,css/">
+   </iframe>
+
+If there is no need to show all the tabs, they might be removed: ``src="http://jsfiddle.net/zalun/NmudS/embedded/js,result/"``
+
+.. raw:: html
+
+   <iframe 
+     style="width: 100%; height: 210px" 
+     src="http://jsfiddle.net/zalun/NmudS/embedded/js,result/">
+   </iframe>
+
+
+
+Changing skin
+-------------
+
+It is already technically possible to change the skin of the embedded iframe, there are simply no other skins. This code would show the unstyled embedded iframe as no dark.css is available. ``src="http://jsfiddle.net/zalun/NmudS/embedded/js,result/dark/"``
