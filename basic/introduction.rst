@@ -1,5 +1,5 @@
 ============
-Introduction
+Basic usage
 ============
 
 jsFiddle is divided into few sections: menu, sidebar, and editing panels.

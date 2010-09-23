@@ -13,7 +13,7 @@ etc. Using this approach, JavaScript developers can very easily isolate bugs.
 We aim to support all actively developed frameworks - it helps with testing 
 compatibility.* [Interview]_
 
-News and announcements might be found on `the blog <http://blog.jsfiddle.net/>`_. One can also follow us on `Twitter <http://twitter.com/js_fiddle>`_ or `Facebook <http://www.facebook.com/pages/jsFiddle/183790024998>`_
+News and announcements may be found on `the blog <http://blog.jsfiddle.net/>`_. One can also follow us on `Twitter <http://twitter.com/js_fiddle>`_ or `Facebook <http://www.facebook.com/pages/jsFiddle/183790024998>`_
 
 .. note::
    This documentation is a work in progress. If you're interested in contributing 
@@ -23,17 +23,14 @@ News and announcements might be found on `the blog <http://blog.jsfiddle.net/>`_
 Contents:
 
 .. toctree::
-   :maxdepth: 1
-
-   basic/introduction.rst
-
-.. toctree::
    :maxdepth: 2
 
+   basic/introduction.rst
    use/index.rst
    api/index.rst
    framework_support.srt
 
+* :download:`Lightning talk slides </_static/jsFiddle.pdf>`
 * :ref:`genindex`
 * :ref:`search`
 
