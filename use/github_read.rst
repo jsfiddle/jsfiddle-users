@@ -24,13 +24,11 @@ Demo directory structure
   * demo.details
 
 
-.. glossary:: 
+**demo.[js/html/css]**
+   contains fiddle code for the specific panel
 
-   demo.[js/html/css]
-      contains fiddle code for the specific panel
-
-   demo.details
-      is a description of the demo written in YAML, structure compatible with MooTools doc
+**demo.details**
+  is a description of the demo written in YAML, structure compatible with MooTools doc
 
 .. code-block:: yaml
    
@@ -52,16 +50,14 @@ Run in jsFiddle
 
 URL: http://jsfiddle.net/gh/get/{framework}/{version}/{github_tree}/ where:
 
-.. glossary:: :sorted:
+**framework**
+   the desired framework name. Which framework should be loaded with the fiddle (vanilla for plain JavaScript)
 
-   framework
-      the desired framework name. Which framework should be loaded with the fiddle (vanilla for plain JavaScript)
-
-   version
-      substring of the framework version - the last passing will be used
+**version**
+   substring of the framework version - the last passing will be used
     
-   github_tree
-      the path to the directory used to display it on github page (without "http://github.com/")
+**github_tree**
+   the path to the directory used to display it on github page (without "http://github.com/")
 
 Example
 =======

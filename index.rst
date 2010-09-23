@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to jsFiddle's documentation!
-====================================
+Welcome to jsFiddle's documentation
+===================================
 
 `JsFiddle <http://jsfiddle.net>`_ *is a playground for web developers, a tool which may be used in many 
 ways. One can use it as an online editor for snippets build from HTML, CSS 

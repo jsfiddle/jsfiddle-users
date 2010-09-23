@@ -1,3 +1,5 @@
+.. _github-response:
+
 ==================================
 Pass response directly from GitHub
 ==================================
@@ -25,13 +27,11 @@ Run in jsFiddle
 
 URL: */gh/get/response.{extension}/{github_tree}/* where:
 
-.. glossary:: :sorted:
+**github_tree**
+  the path to the directory used to display it on github page (without "http://github.com/")
 
-   github_tree
-      the path to the directory used to display it on github page (without "http://github.com/")
-
-   extension
-      the file extension of the demo.response.{extension} in github demo repository
+**extension**
+  the file extension of the demo.response.{extension} in github demo repository
 
 
 .. note::

@@ -11,26 +11,24 @@ Input
 
 One may change its result by changing following **GET parameters**:
 
-.. glossary:: :sorted:
-   
-   callback 
-      function name for the Xdomain (default: None).
-      if no callback provided standard JSON will be returned
+**callback**
+  function name for the Xdomain (default: None).
+  if no callback provided standard JSON will be returned
 
-   start 
-      offset element (default: 0)
+**start** 
+  offset element (default: 0)
 
-   limit 
-      number of elements to return (default: 10)
+**limit** 
+  number of elements to return (default: 10)
 
-   sort 
-      sorting type - date, alphabetical or framework (default: `date')
+**sort** 
+  sorting type - date, alphabetical or framework (default: 'date')
 
-   order 
-      desc or asc (default: `asc')
-    
-   framework 
-      filter framework (default: None)
+**order** 
+  desc or asc (default: 'asc')
+
+framework 
+  filter framework (default: None)
 
 Result
 ======
