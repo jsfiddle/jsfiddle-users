@@ -25,7 +25,7 @@ Demo directory structure
 Run in jsFiddle
 ---------------
 
-URL: */gh/get/response.{extension}/{github_tree}/* where:
+URL: ``/gh/get/response.{extension}/{github_tree}/`` where:
 
 **github_tree**
   the path to the directory used to display it on github page (without "http://github.com/")
@@ -41,7 +41,7 @@ Example
 =======
 
 Content of the http://github.com/zalun/jsFiddleGithubDemo/raw/master/Demo/demo.response.html 
-will be returned with *text/html* MIME type if this url will be loaded  */gh/get/response.html/zalun/jsFiddleGithubDemo/tree/master/Demo/* using Ajax request.
+will be returned with *text/html* MIME type if this url will be loaded  ``/gh/get/response.html/zalun/jsFiddleGithubDemo/tree/master/Demo/`` using Ajax request.
 
 Here it is working within the `jsFiddle <http://jsfiddle.net/gh/get/mootools/1.2/zalun/jsFiddleGithubDemo/tree/master/Demo/>`_
 

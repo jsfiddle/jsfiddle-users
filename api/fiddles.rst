@@ -7,7 +7,7 @@ It allows to create plugins displaying fiddles created by specific user.
 
 Input 
 =====
-**URL structure**: http://jsfiddle.net/api/user/{username}/demo/list.json/
+**URL structure**: ``http://jsfiddle.net/api/user/{username}/demo/list.json/``
 
 One may change its result by changing following **GET parameters**:
 

@@ -48,7 +48,7 @@ Demo directory structure
 Run in jsFiddle
 ---------------
 
-URL: http://jsfiddle.net/gh/get/{framework}/{version}/{github_tree}/ where:
+URL: ``http://jsfiddle.net/gh/get/{framework}/{version}/{github_tree}/`` where:
 
 **framework**
    the desired framework name. Which framework should be loaded with the fiddle (vanilla for plain JavaScript)
