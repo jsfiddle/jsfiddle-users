@@ -13,12 +13,19 @@ etc. Using this approach, JavaScript developers can very easily isolate bugs.
 We aim to support all actively developed frameworks - it helps with testing 
 compatibility.* [Interview]_
 
+News and announcements might be found on `the blog <http://blog.jsfiddle.net/>`_. One can also follow us on `Twitter <http://twitter.com/js_fiddle>`_ or `Facebook <http://www.facebook.com/pages/jsFiddle/183790024998>`_
+
 .. note::
    This documentation is a work in progress. If you're interested in contributing 
    to jsFiddle's documentation please open an `issue <http://github.com/zalun/jsFiddle-Documentation/issues>`_
    Feel free to edit it on `GitHub <http://github.com/zalun/jsFiddle-Documentation>`_
 
 Contents:
+
+.. toctree::
+   :maxdepth: 1
+
+   basic/introduction.rst
 
 .. toctree::
    :maxdepth: 2
