@@ -11,3 +11,4 @@ fi
 
 pip install -E $ENVIRONMENT -r $BASEDIR/tools/requirements.txt
 
+cp $BASEDIR/tools/git-exclude $BASEDIR/.git/info/exclude
