@@ -6,7 +6,7 @@
 Welcome to jsFiddle's documentation!
 ====================================
 
-*JsFiddle is a playground for web developers, a tool which may be used in many 
+`JsFiddle <http://jsfiddle.net>`_ *is a playground for web developers, a tool which may be used in many 
 ways. One can use it as an online editor for snippets build from HTML, CSS 
 and JavaScript. The code can then be shared with others, embedded on a blog, 
 etc. Using this approach, JavaScript developers can very easily isolate bugs. 
@@ -14,13 +14,18 @@ We aim to support all actively developed frameworks - it helps with testing
 compatibility.* [Interview]_
 
 .. note::
-   This documentation is a work in progress, if you think it should be changed
-   please send issues or fix it on http://github.com/zalun/jsFddle-Documentation
+   This documentation is a work in progress. If you're interested in contributing 
+   to jsFiddle's documentation please open an `issue <http://github.com/zalun/jsFiddle-Documentation/issues>`_
+   Feel free to edit it on `GitHub <http://github.com/zalun/jsFiddle-Documentation>`_
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
+
+   use/index.rst
+   api/index.rst
+   framework_support.srt
 
 * :ref:`search`
 
