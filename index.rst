@@ -13,6 +13,9 @@ etc. Using this approach, JavaScript developers can very easily isolate bugs.
 We aim to support all actively developed frameworks - it helps with testing 
 compatibility.* [Interview]_
 
+.. note::
+   This documentation is a work in progress, if you think it should be changed
+   please send issues or fix it on http://github.com/zalun/jsFddle-Documentation
 
 Contents:
 
@@ -21,4 +24,4 @@ Contents:
 
 * :ref:`search`
 
-.. [Interview] http://davidwalsh.name/jsfiddle-interview "An Interview with jsFiddle Creator Piotr Zalewa"
+.. [Interview] http://davidwalsh.name/jsfiddle-interview 
