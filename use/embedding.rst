@@ -1,3 +1,4 @@
+.. _embedding:
 ====================
 Embedding the fiddle
 ====================

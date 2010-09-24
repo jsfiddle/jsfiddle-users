@@ -29,8 +29,8 @@ Contents:
    use/index.rst
    api/index.rst
    framework_support.srt
+   media/index.rst
 
-* :download:`Lightning talk slides </_static/jsFiddle.pdf>`
 * :ref:`genindex`
 * :ref:`search`
 
