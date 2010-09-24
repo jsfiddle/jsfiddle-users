@@ -13,14 +13,25 @@ etc. Using this approach, JavaScript developers can very easily isolate bugs.
 We aim to support all actively developed frameworks - it helps with testing 
 compatibility.* [Interview]_
 
-News and announcements may be found on `the blog <http://blog.jsfiddle.net/>`_. One can also follow us on `Twitter <http://twitter.com/js_fiddle>`_ or `Facebook <http://www.facebook.com/pages/jsFiddle/183790024998>`_
+News and announcements may be found on `the blog <http://blog.jsfiddle.net/>`_. One can also follow us on i
+`Twitter <http://twitter.com/js_fiddle>`_ or `Facebook <http://www.facebook.com/pages/jsFiddle/183790024998>`_.
+
+Please join to the `jsfiddle-users mailing list <http://groups.google.co.uk/group/jsfiddle-users>`_ 
 
 .. note::
-   This documentation is a work in progress. If you're interested in contributing 
-   to jsFiddle's documentation please open an `issue <http://github.com/zalun/jsFiddle-Documentation/issues>`_
-   Feel free to edit it on `GitHub <http://github.com/zalun/jsFiddle-Documentation>`_
+   This documentation is a work in progress. 
+   Please fork the `GitHub repo <http://github.com/zalun/jsFiddle-Documentation>`_ ASAP :).
+   Or just open an `issue <http://github.com/zalun/jsFiddle-Documentation/issues>`_.
+
+
+.. note::
+   Some of the docs require to have a user account. Please be patient. We will provide it
+   as soon as these will be usable. If you have a really, really strong reason to use jsFiddle
+   with user account (writing a book, framework documentation etc.), do not hesitate to `contact us 
+   <http://webdev.zalewa.info/contact/>`_.
 
 Contents:
+---------
 
 .. toctree::
    :maxdepth: 2
