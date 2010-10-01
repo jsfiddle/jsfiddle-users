@@ -10,4 +10,6 @@ It is also possible to store XHR responses directly on GitHub
    :maxdepth: 1
 
    github_read.rst
+   gist_read.rst
    github_response.rst
+   gist_response.rst

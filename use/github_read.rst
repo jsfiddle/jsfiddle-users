@@ -1,6 +1,6 @@
-========================
-Display Demo from GitHub
-========================
+===================================
+Display Demo from GitHub Repository
+===================================
 
 It is enough to simply prepare and provide a link on the page to have jsFiddle read the demo from 
 GitHub and present it as a fiddle.

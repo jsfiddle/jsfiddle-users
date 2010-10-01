@@ -1,8 +1,8 @@
 .. _github-response:
 
-==================================
-Pass response directly from GitHub
-==================================
+=============================================
+Pass response directly from GitHub Repository
+=============================================
 
 While the demo might use Ajax requests jsFiddle will read them and send using the right MIME type.
 
@@ -41,7 +41,8 @@ Example
 =======
 
 Content of the http://github.com/zalun/jsFiddleGithubDemo/raw/master/Demo/demo.response.html 
-will be returned with *text/html* MIME type if this url will be loaded  ``/gh/get/response.html/zalun/jsFiddleGithubDemo/tree/master/Demo/`` using Ajax request.
+will be returned with *text/html* MIME type if this url will be loaded  ``http://jsfiddl.net/gh/get/response.html/zalun/jsFiddleGithubDemo/tree/master/Demo/`` using Ajax request.
 
 Here it is working within the `jsFiddle <http://jsfiddle.net/gh/get/mootools/1.2/zalun/jsFiddleGithubDemo/tree/master/Demo/>`_
+
 
