@@ -21,8 +21,13 @@ CSS
 Code entered in this panel will be placed in the header's style block, that is betweeen ``<style>`` and ``</style>``.
 
 .. note::
-   If there is a need to edit the header one can use a *"CSS panel hack"*. Simply close style block with ``</style>`` 
-   enter your code modyfying header and open the ``<style>`` again
+   If there is a need to edit the header one can use a *"CSS panel hack"*::
+      
+      /* some standard CSS */
+      </style>
+      <!-- access to the HEAD element -->
+      <style>
+
 
 JavaScript
 ----------
@@ -47,6 +52,11 @@ Current result is saved in a **draft**. One may access it by loading the http://
    other system, mobile or your watch if it happened to have a web browser. Keep editing on your favourite browser,
    test on anything else.
 
+   #. Log in to jsFiddle on your favorite browser
+   #. Open or create a fiddle
+   #. Hit [Run] button
+   #. Open the draft page http://jsfiddle.net/draft/ on the other browser/device. It will display the last executed fiddle
+   #. Reload the draft page every time you'd like to test
 
 
 
