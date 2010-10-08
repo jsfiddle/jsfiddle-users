@@ -1,9 +1,13 @@
 git clone git@github.com:zalun/jsFiddle-Documentation.git
 cd jsFiddle-Documentation
-./script/install.sh
+
+# create virtual enviroinment
+mkvirtualenv docfiddle
+
+# install depoendencies
+pip install tools/requirements.txt
 
 # compiling the html pages
-./tools/make.sh html
+cd docs
+make html
 
-# creating pdf 
-./tools/make.sh 

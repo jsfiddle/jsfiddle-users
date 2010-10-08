@@ -28,7 +28,7 @@ URL: ``/echo/json/``
 Data has to be provided via POST
 
 **json**
-  is a JSON string representing the object jsFiddle should return. It has to be valid JSON or error will bge returned
+  is a JSON string representing the object jsFiddle should return. It has to be valid JSON or error will be returned
 **delay**
   optional, it's a time in seconds after which data should be returned
 
