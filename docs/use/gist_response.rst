@@ -1,4 +1,4 @@
-.. _github-response:
+.. _gist-response:
 
 ================================
 Pass response directly from Gist
