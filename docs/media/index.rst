@@ -2,20 +2,29 @@
 Download
 ========
 
+Logo
+----
+
+.. figure:: /_static/corporate_design/jsfiddle-logo-thumb.png 
+   :align: center
+   :figwidth: 160px
+
+   :download:`[png]</_static/corporate_design/jsfiddle-logo.png>` 
+   :download:`[ai] </_static/corporate_design/jsfiddle-logo.ai>` 
+   :download:`[svg] </_static/corporate_design/jsfiddle-logo.svg>` 
+
 Wallpaper
 ---------
 
-+------------------------------------------------------+---------------------------------------------------------------------+
-| .. image:: /_static/jsfiddle-desktop-thumbnail-a.png | :download:`[1920x1200] </_static/jsfiddle-desktop-1920x1200-a.png>` |
-|                                                      |                                                                     |
-|                                                      | :download:`[1680x1050] </_static/jsfiddle-desktop-1680x1050-a.png>` |
-|                                                      |                                                                     |
-|                                                      | :download:`[1440x900] </_static/jsfiddle-desktop-1440x900-a.png>`   |
-|                                                      |                                                                     |
-|                                                      | :download:`[1280x800] </_static/jsfiddle-desktop-1280x800-a.png>`   |
-|                                                      |                                                                     |
-|                                                      | :download:`[1024x768] </_static/jsfiddle-desktop-1024x768-a.png>`   |
-+------------------------------------------------------+---------------------------------------------------------------------+
+.. figure:: /_static/wallpaper/jsfiddle-desktop-thumbnail-a.png 
+   :align: center
+   :figwidth: 260px
+
+   :download:`[1920x1200] </_static/wallpaper/jsfiddle-desktop-1920x1200-a.png>`
+   :download:`[1680x1050] </_static/wallpaper/jsfiddle-desktop-1680x1050-a.png>`
+   :download:`[1440x900] </_static/wallpaper/jsfiddle-desktop-1440x900-a.png>`
+   :download:`[1280x800] </_static/wallpaper/jsfiddle-desktop-1280x800-a.png>`
+   :download:`[1024x768] </_static/wallpaper/jsfiddle-desktop-1024x768-a.png>` 
 
 
 Slides
