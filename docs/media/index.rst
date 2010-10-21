@@ -21,7 +21,7 @@ Wallpaper
 
 .. figure:: /_static/wallpaper/jsfiddle-desktop-thumbnail-a.png 
    :align: center
-   :figwidth: 260px
+   :figwidth: 340px
 
    :download:`[1920x1200] </_static/wallpaper/jsfiddle-desktop-1920x1200-a.png>`
    :download:`[1680x1050] </_static/wallpaper/jsfiddle-desktop-1680x1050-a.png>`
