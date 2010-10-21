@@ -9,6 +9,9 @@ jsFiddle is divided into few sections: menu, sidebar, and editing panels.
 Entering code
 =============
 
+One may switch between editing panels using the ``ctrl`` + ``up arrow``
+and ``ctrl`` + ``down arrow``.
+
 HTML
 ----
 Code entered in this panel will be rendered inside body of the document, that is between ``<body>`` and ``</body>``.
@@ -41,14 +44,17 @@ Result panel
 ------------
 .. _result-without-save:
 This panel is read only - it contains an iframe with the result of running the fiddle. One can show the result without 
-saving the fiddle - it is enough to click on :menuselection:`Run`
+saving the fiddle - it is enough to click on :menuselection:`Run` or
+hit ``ctrl`` + ``Enter`` key combination
 
 Draft
 -----
-Current result is saved in a **draft**. One may access it by loading the http://jsfiddle.net/draft/. 
+Only for registered users. Current result is saved in a **draft**. 
+
+One may access it by loading the http://jsfiddle.net/draft/. The shortcut is ``ctrl`` + ``shift`` + ``Enter``.
 
 .. note::
-   Using Draft is the easiest and probavly best way to test fiddle in "other browser". Be it IE5, or anything running on 
+   Using Draft is the easiest and probably best way to test fiddle in "other browser". Be it IE5, or anything running on 
    other system, mobile or your watch if it happened to have a web browser. Keep editing on your favourite browser,
    test on anything else.
 
