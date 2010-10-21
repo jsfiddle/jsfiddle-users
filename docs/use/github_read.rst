@@ -1,3 +1,5 @@
+.. _github-read:
+
 ===================================
 Display Demo from GitHub Repository
 ===================================
