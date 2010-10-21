@@ -5,13 +5,16 @@ Download
 Logo
 ----
 
-.. figure:: /_static/corporate_design/jsfiddle-logo-thumb.png 
-   :align: center
-   :figwidth: 160px
-
-   :download:`[png]</_static/corporate_design/jsfiddle-logo.png>` 
-   :download:`[ai] </_static/corporate_design/jsfiddle-logo.ai>` 
-   :download:`[svg] </_static/corporate_design/jsfiddle-logo.svg>` 
++--------------------------------------------------------------------+---------------------------------------------------------------------------+
+| .. figure:: /_static/corporate_design/jsfiddle-logo-thumb.png      | .. figure:: /_static/corporate_design/jsfiddle-logo-white-thumb.png       |
+|    :align: center                                                  |    :align: center                                                         |
+|    :figwidth: 160px                                                |    :figwidth: 160px                                                       |
+|                                                                    |                                                                           |
+|    :download:`[png]</_static/corporate_design/jsfiddle-logo.png>`  |    :download:`[png]</_static/corporate_design/jsfiddle-logo-white.png>`   |
+|    :download:`[ai] </_static/corporate_design/jsfiddle-logo.ai>`   |    :download:`[ai] </_static/corporate_design/jsfiddle-logo.ai>`          |
+|    :download:`[svg] </_static/corporate_design/jsfiddle-logo.svg>` |    :download:`[svg] </_static/corporate_design/jsfiddle-logo.svg>`        |
++                                                                    |                                                                           |
++--------------------------------------------------------------------+---------------------------------------------------------------------------+
 
 Wallpaper
 ---------
@@ -32,5 +35,5 @@ Slides
 
 * London Ajax User Group
  * :download:`Lightning Talk </_static/jsFiddle.pdf>` with numbers updated 24/9/2010
-
 * :download:`Keynote theme </_static/jsfiddle-keynote-theme.kth>`
+
