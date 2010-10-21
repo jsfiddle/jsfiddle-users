@@ -11,8 +11,8 @@ Logo
 |    :figwidth: 160px                                                |    :figwidth: 160px                                                       |
 |                                                                    |                                                                           |
 |    :download:`[png]</_static/corporate_design/jsfiddle-logo.png>`  |    :download:`[png]</_static/corporate_design/jsfiddle-logo-white.png>`   |
-|    :download:`[ai] </_static/corporate_design/jsfiddle-logo.ai>`   |    :download:`[ai] </_static/corporate_design/jsfiddle-logo.ai>`          |
-|    :download:`[svg] </_static/corporate_design/jsfiddle-logo.svg>` |    :download:`[svg] </_static/corporate_design/jsfiddle-logo.svg>`        |
+|    :download:`[ai] </_static/corporate_design/jsfiddle-logo.ai>`   |    :download:`[svg] </_static/corporate_design/jsfiddle-logo-white.svg>`  |
+|    :download:`[svg] </_static/corporate_design/jsfiddle-logo.svg>` |                                                                           |
 +                                                                    |                                                                           |
 +--------------------------------------------------------------------+---------------------------------------------------------------------------+
 
