@@ -83,4 +83,13 @@ If there is no need to show all the tabs, they might be removed: ``src="http://j
 Changing skin
 -------------
 
-It is already technically possible to change the skin of the embedded iframe, there are simply no other skins. This code would show the unstyled embedded iframe as no dark.css is available. ``src="http://jsfiddle.net/zalun/NmudS/embedded/js,result/dark/"``
+It is already technically possible to change the skin of the embedded fiddle.
+Following exa,ple is using a presentation skin. ``src="http://jsfiddle.net/zalun/NmudS/embedded/js,result/presentation/"``
+
+.. raw:: html
+
+   <iframe 
+     style="width: 100%; height: 210px" 
+     src="http://jsfiddle.net/zalun/NmudS/embedded/js,result/presentation/">
+   </iframe>
+
