@@ -42,7 +42,7 @@ All fields are optional. New fiddle setting will be used if no data provided.
    description of the fiddle
 
 **dtd**
-   substring of the chosen DTD (i.e. html5)
+   substring of the chosen DTD (i.e. "html 4")
   
 
 Example
