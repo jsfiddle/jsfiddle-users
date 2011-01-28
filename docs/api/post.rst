@@ -35,6 +35,9 @@ All fields are optional. New fiddle setting will be used if no data provided.
 **html,js,css**
    code for specific panels
 
+**resources**
+   a list of external resources separated by commas
+
 **title**
    title of the fiddle
 
