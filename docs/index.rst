@@ -22,7 +22,7 @@ Please join to the `jsfiddle-users mailing list <http://groups.google.co.uk/grou
 .. note::
    This documentation is a work in progress. 
    Please fork the `GitHub repo <http://github.com/jsfiddle/jsFiddle-Documentation>`_ ASAP :).
-   Or just open an `issue <http://github.com/jsfiddle/jsFiddle-Documentation/issues>`_.
+   Or just open an `issue <http://github.com/zalun/jsFiddle-Documentation/issues>`_.
 
 
 .. note::
