@@ -26,7 +26,7 @@ Code entered in this panel will be placed in the header's style block, that is b
 .. note::
    If there is a need to edit the header one can use a *"CSS panel hack"*::
       
-      /* some standard CSS */
+      /* some standard CSS \*/
       </style>
       <!-- access to the HEAD element -->
       <style>
@@ -40,9 +40,11 @@ and ``</script>``.
 Getting Result
 ==============
 
+.. _result-without-save:
+
 Result panel
 ------------
-.. _result-without-save:
+
 This panel is read only - it contains an iframe with the result of running the fiddle. One can show the result without 
 saving the fiddle - it is enough to click on :menuselection:`Run` or
 hit ``ctrl`` + ``Enter`` key combination
@@ -98,7 +100,27 @@ Fiddle Settings (Sidebar)
 
 Choose Framework
 ----------------
-Drop down contains the list of all supported frameworks. Below there is a list of additional libraries dependent on
+Contains 2 selectable lists.
+
+First is about the Wrap with default setting to "onLoad". There are 4 options to choose:
+
+no wrap(head):
+   do not wrap the JavaScript code, place it in ``<head>`` section
+
+no wrap(body):
+   do not wrap the JavaScript code, place it in ``<body>`` section
+
+onLoad:
+   wrap the code so it will run in "onLoad" ``window`` event
+
+onDomReady:
+   wrap the code so it will run in "onDomReady" ``window`` event
+
+The second drop down contains the list of all supported frameworks. Choosing one will create ``<script>`` tag in
+the ``<head>`` section which will load the desired framework version. Choosing the *No-Library* one will 
+not load any framework.
+
+Below there is a list of additional libraries dependent on
 currently selected framework version. In example - choosing MooTools Core 1.2.4 will load a lit containing MooTools Mode, 
 Clientcide, FormCheck, Upgrade Helper and ART. All these may be loaded with the fiddle if checkbox is checked.
 
