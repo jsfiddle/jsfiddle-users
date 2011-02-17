@@ -44,12 +44,13 @@ Result
          "url": "...",
          "created": "...",
          "framework": "...",
-         "version": 123,              // version number
+         "version": 123,              // base version number
+         "latest_version": 234,       // latest version number
          "title": "..."
        },
        // ...
      ],
-     "overallResultSetCount": 123     // number of the results
+     "overallResultSetCount": 12      // number of the results
    });
 
 Example
