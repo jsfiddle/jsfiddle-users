@@ -19,13 +19,17 @@ There is an option to add dependencies as a comma separated list:
 URL: ``http://jsfiddle.net/api/post/{framework}/{version}/dependencies/{dependency_list}/``
 
 **framework**
-   the desired framework name. Which framework should be loaded with the fiddle (vanilla for plain JavaScript)
+   the desired framework name. Which framework should be loaded with the 
+   fiddle (vanilla for plain JavaScript)
 
 **version**
-   substring of the framework version - the last passing will be used. If 1.3 will be given, jsFiddle will use the latest search result. it will favorize 1.3.2 over 1.3.1 and 1.3
+   substring of the framework version - the last passing will be used. If 1.3 
+   will be given, jsFiddle will use the latest search result. it will favorize 
+   1.3.2 over 1.3.1 and 1.3
     
 **dependency_list**
-   comma separated list of dependency substrings. It would mark any dependency containing the substring.
+   comma separated list of dependency substrings. It would mark any dependency 
+   containing the substring.
 
 POST Variables
 --------------
@@ -43,6 +47,10 @@ All fields are optional. New fiddle setting will be used if no data provided.
 
 **description**
    description of the fiddle
+
+**normalize_css**
+   yes or no - should normalize.css be loaded before any CSS
+   declarations?
 
 **dtd**
    substring of the chosen DTD (i.e. "html 4")
