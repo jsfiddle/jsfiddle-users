@@ -40,6 +40,9 @@ Gist files
     resources:
       - http://some.url.com/some/file.js
       - http://other.url.com/other_filename.css
+    normalize_css: no
+
+All above fields are optional.
 
 
 Run in jsFiddle

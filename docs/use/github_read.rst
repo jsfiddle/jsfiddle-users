@@ -45,10 +45,12 @@ Demo directory structure
     resources:
       - http://some.url.com/some/file.js
       - http://other.url.com/other_filename.css
+    normalize_css: no
     ...
    
    Everything after the line containing only '...' will not be parsed
 
+All above fields are optional.
 
 Run in jsFiddle
 ---------------
