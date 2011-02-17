@@ -37,6 +37,9 @@ Gist files
     authors:
       - John Doe
       - Jan Wisniewski
+    resources:
+      - http://some.url.com/some/file.js
+      - http://other.url.com/other_filename.css
 
 
 Run in jsFiddle

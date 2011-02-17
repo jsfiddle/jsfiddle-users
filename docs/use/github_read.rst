@@ -42,6 +42,9 @@ Demo directory structure
     authors:
       - John Doe
       - Jan Wisniewski
+    resources:
+      - http://some.url.com/some/file.js
+      - http://other.url.com/other_filename.css
     ...
    
    Everything after the line containing only '...' will not be parsed
