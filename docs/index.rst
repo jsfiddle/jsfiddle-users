@@ -11,7 +11,7 @@ ways. One can use it as an online editor for snippets build from HTML, CSS
 and JavaScript. The code can then be shared with others, embedded on a blog, 
 etc. Using this approach, JavaScript developers can very easily isolate bugs. 
 We aim to support all actively developed frameworks - it helps with testing 
-compatibility.* [Interview]_
+compatibility.* `(full Interview) <http://davidwalsh.name/jsfiddle-interview>`_
 
 News and announcements may be found on `the blog <http://blog.jsfiddle.net/>`_. One can also follow us on 
 `Twitter <http://twitter.com/js_fiddle>`_, `Facebook <http://www.facebook.com/pages/jsFiddle/183790024998>`_ 
@@ -24,12 +24,16 @@ Please join to the `jsfiddle-users mailing list <http://groups.google.co.uk/grou
    Please fork the `GitHub repo <http://github.com/jsfiddle/jsfiddle-docs-alpha>`_ ASAP :).
    Or just open an `issue <http://github.com/jsfiddle/jsfiddle-docs-alpha/issues>`_.
 
-
 .. note::
    Some of the docs require to have a user account. Please be patient. We will provide it
    as soon as these will be usable. If you have a really, really strong reason to use jsFiddle
    with user account (writing a book, framework documentation etc.), do not hesitate to `contact us 
    <http://webdev.zalewa.info/contact/>`_.
+
+.. note::
+   Pronounce it as the single letters "j" and "s", and the word, "fiddle": /jay ess fid-uhl/
+   `(English Language & Usage) <http://english.stackexchange.com/questions/8688/pronunciation-of-jsfiddle>`_
+
 
 Contents:
 ---------
@@ -45,5 +49,3 @@ Contents:
 
 * :ref:`genindex`
 * :ref:`search`
-
-.. [Interview] http://davidwalsh.name/jsfiddle-interview 
