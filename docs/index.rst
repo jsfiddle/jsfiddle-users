@@ -25,12 +25,6 @@ Please join to the `jsfiddle-users mailing list <http://groups.google.co.uk/grou
    Or just open an `issue <http://github.com/jsfiddle/jsfiddle-docs-alpha/issues>`_.
 
 .. note::
-   Some of the docs require to have a user account. Please be patient. We will provide it
-   as soon as these will be usable. If you have a really, really strong reason to use jsFiddle
-   with user account (writing a book, framework documentation etc.), do not hesitate to `contact us 
-   <http://webdev.zalewa.info/contact/>`_.
-
-.. note::
    Pronounce it as the single letters "j" and "s", and the word, "fiddle": /jay ess fid-uhl/
    `(English Language & Usage) <http://english.stackexchange.com/questions/8688/pronunciation-of-jsfiddle>`_
 
@@ -46,6 +40,14 @@ Contents:
    api/index.rst
    framework_support.srt
    media/index.rst
+
+
+Other resources:
+----------------
+
+* http://www.cdnjs.com/ - *the missing cdn* - collection of interesting JS 
+  Libraries
+* http://dummyimage.com/ - *Dynamic Dummy Image Generator*
 
 * :ref:`genindex`
 * :ref:`search`
