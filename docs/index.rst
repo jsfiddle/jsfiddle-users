@@ -38,7 +38,6 @@ Contents:
    basic/introduction.rst
    use/index.rst
    api/index.rst
-   framework_support.srt
    media/index.rst
 
 
@@ -48,6 +47,8 @@ Other resources:
 * http://www.cdnjs.com/ - *the missing cdn* - collection of interesting JS 
   Libraries
 * http://dummyimage.com/ - *Dynamic Dummy Image Generator*
+* http://placekitten.com/ - *pictures of kittens for use as placeholders in 
+  your designs or code*
 
 * :ref:`genindex`
 * :ref:`search`
