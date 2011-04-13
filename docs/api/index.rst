@@ -9,3 +9,4 @@ Contents:
 
    fiddles.rst
    post.rst
+   get_username
