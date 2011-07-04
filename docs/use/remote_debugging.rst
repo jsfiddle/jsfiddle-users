@@ -3,7 +3,7 @@
 Debugging remote resources
 ==========================
 
-jsFiddle make it easy to debug fiddles with 
+jsFiddle makes it easy to debug fiddles with 
 `weinre <http://pmuellr.github.com/weinre/>`_. 
 
 .. note:: Please read "Supported Libraries and Platforms" on 
