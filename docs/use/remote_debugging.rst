@@ -9,6 +9,8 @@ jsFiddle make it easy to debug fiddles with
 .. note:: Please read "Supported Libraries and Platforms" on 
  `weinre <http://pmuellr.github.com/weinre/>`_ website. 
 
+.. note:: This feature is only for logged in users.
+
 .. figure:: /_static/screenshots/remote-button.png
    :align: right                                            
    :figwidth: 141px                                          
