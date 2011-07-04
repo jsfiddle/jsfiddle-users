@@ -2,7 +2,13 @@
 Echo Javascript file and XHR requests
 =====================================
 
-To improve user experience "echo" features has been created. This allows to test XHR requests, add javascript files, create workers - all from one fiddle, so it is more transparent for the user reading the code. XHR requests are split to *HTML*, *JSON*, *JSONP* and *XML*. :ref:`Gist <gist-response>` and :ref:`github <github-response>` responses are similar to the echo feature and go nicely in pair with storing fiddles in :ref:`gist <gist-read>` and :ref:`github <github-read>`.
+To improve user experience "echo" features has been created. This allows 
+to test XHR requests, add javascript files, create workers - all from 
+one fiddle, so it is more transparent for the user reading the code. XHR 
+requests are split to *HTML*, *JSON*, *JSONP* and *XML*. 
+:ref:`Gist <gist-response>` and :ref:`github <github-response>` responses 
+are similar to the echo feature and go nicely in pair with storing 
+fiddles in :ref:`gist <gist-read>` and :ref:`github <github-read>`.
 
 
 HTML
@@ -17,9 +23,13 @@ Data has to be provided via POST
 **delay**
   optional, it's a time in seconds after which data should be returned
 
-Example
--------
-http://jsfiddle.net/zalun/NF2jz/
+.. raw:: html
+
+   <iframe 
+     style="width: 100%; height: 210px" 
+     src="http://jsfiddle.net/zalun/NF2jz/embedded/js,html,result/">
+   </iframe>
+
 
 JSON
 ====
@@ -33,9 +43,13 @@ Data has to be provided via POST
 **delay**
   optional, it's a time in seconds after which data should be returned
 
-Example
--------
-http://jsfiddle.net/zalun/QsHw4/
+
+.. raw:: html
+
+   <iframe 
+     style="width: 100%; height: 210px" 
+     src="http://jsfiddle.net/zalun/QsHw4/embedded/js,html,result/">
+   </iframe>
 
 
 JSONP

@@ -13,3 +13,4 @@ Contents:
    embedding.rst
    echo.rst
    github.rst
+   remote_debugging.rst
