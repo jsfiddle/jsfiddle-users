@@ -22,9 +22,7 @@ Code entered in this panel will be rendered inside body of the document,
 that is between ``<body>`` and ``</body>``.
 
 .. warning:: 
-   Please do not enter ``doctype``, ``body`` etc. into the HTML panel. 
-   These tags are placed automatically.
-
+   Please do not enter ``doctype``, ``body`` etc. into the HTML panel.  These tags are placed automatically.  
 CSS
 ---
 Code entered in this panel will be placed in the header's style block, 
@@ -57,6 +55,8 @@ This panel is read only - it contains an iframe with the result of running
 the fiddle. One can show the result without saving the fiddle - it is enough 
 to click on :menuselection:`Run` or
 hit ``ctrl`` + ``Enter`` key combination
+
+.. _result_draft:
 
 Draft
 -----
@@ -176,6 +176,8 @@ jsFiddle is recognizing the type of the resource by the extension. If you
 want to use a dynamic resource please add a dummy GET variable i.e.
 ``http://example.com/download/js/dynamically.js?somevar=somevalue&dummy=.js``.
 This will trick jsFiddle to recognize it as JavaScript resource.
+
+.. _fiddle_settings-info:
 
 Info
 ----
