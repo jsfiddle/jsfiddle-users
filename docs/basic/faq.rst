@@ -14,7 +14,7 @@ What about a node/PHP/Python/ASP fiddle?
 ########################################
 
 Our current goal is to help with front-end development. For back-end please 
-use `bah <blah>`_
+use `Ideone <http://ideone.com/>`_
 
 Why jsFiddle is not working in IE6 (or other old browser)?
 ##########################################################
