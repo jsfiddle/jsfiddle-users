@@ -14,7 +14,7 @@ What about a node/PHP/Python/ASP fiddle?
 ########################################
 
 Our current goal is to help with front-end development. For back-end please 
-use `Ideone <http://ideone.com/>`_
+use `Ideone <http://ideone.com/>`_ or `JSApps <http://jsapp.us/>`_.
 
 Why jsFiddle is not working in IE6 (or other old browser)?
 ##########################################################
