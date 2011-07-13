@@ -29,12 +29,7 @@ Code entered in this panel will be placed in the header's style block,
 that is betweeen ``<style>`` and ``</style>``.
 
 .. note::
-   If there is a need to edit the header one can use a *"CSS panel hack"*::
-      
-      /* your custom CSS \*/
-      </style>
-      <!-- access to the HEAD element -->
-      <style>
+   If there is a need to edit the header one can use a :ref:`css_panel_hack`
 
 
 JavaScript
@@ -161,6 +156,9 @@ selected, the fiddle will be rendered with `normalize.css
 <http://jsfiddle.net/css/normalize.css>`_ which is removing most of the
 browser styling of many HTML tags.
 
+
+.. _add_resources:
+
 Add Resources
 -------------
 
@@ -172,10 +170,10 @@ CSS or JS (with appropriate extension) which should be loaded after the
 framework. It's a perfect place to put libraries which are framework 
 independent, like `RaphaelJS <http://raphaeljs.com>`_
 
-jsFiddle is recognizing the type of the resource by the extension. If you
-want to use a dynamic resource please add a dummy GET variable i.e.
-``http://example.com/download/js/dynamically.js?somevar=somevalue&dummy=.js``.
-This will trick jsFiddle to recognize it as JavaScript resource.
+.. warning:: jsFiddle is recognizing the type of the resource by the extension. 
+ If you want to use a dynamic resource please add a dummy GET variable i.e.
+ ``http://example.com/download/js/dynamically.js?somevar=somevalue&dummy=.js``.
+ This will trick jsFiddle to recognize it as JavaScript resource.
 
 .. _fiddle_settings-info:
 

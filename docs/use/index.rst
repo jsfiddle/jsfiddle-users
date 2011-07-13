@@ -14,3 +14,4 @@ Contents:
    echo.rst
    github.rst
    remote_debugging.rst
+   hacks.rst
