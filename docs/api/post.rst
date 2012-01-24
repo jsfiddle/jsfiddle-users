@@ -61,3 +61,8 @@ Example
 
 http://jsfiddle.net/zalun/sthmj/embedded/result/
 
+.. note::
+   If you'd like to use Vanilla JavaScript (pure JS) please set framework as
+   ``library`` and version as ``pure``. Like 
+   ``http://jsfiddle.net/api/post/library/pure``
+
