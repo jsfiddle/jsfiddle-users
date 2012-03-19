@@ -4,6 +4,11 @@
 Hacking jsFiddle
 ================
 
+.. note::
+
+ Working with CoffeeScript no longer requires to hack jsFiddle. Please visit
+ :ref:`panels`
+
 Sometimes jsFiddle does not provide the feature you'd expect. Below is a small 
 collection of possible, not harmful hacks.
 
@@ -32,34 +37,6 @@ Inserting above code in CSS panel will change the CSS section of the header
  <style>
  </style>
 
-
-.. _coffeescript_hack:
-
-Working with CoffeeScript
-#########################
-
-In short: Fork http://jsfiddle.net/zalun/D9kBP/ to start a CoffeeScript fiddle.
-
-Coffeescript requires the ``script`` tag to be the ``type`` of 
-``text/coffeescript``. This is not possible in current jsFiddle version 
-(expect it to come in beta version). 
-`@avernet <http://twitter.com/#!/avernet>`_ tweeted a nice solution to this. 
-Enter following code to the HTML panel and you can freely write Coffeescript
-in JavaScript panel.
-
-.. code-block:: html
-
- <script>(function(){var s="script",n='\n',d=document,b=d.getElementsByTagName(s)[2].innerHTML.split(n);d.write('<'+s+' type="text/coffeescript">'+b.slice(2,b.length-2).join(n)+'</'+s+'>')})()</script>
-
-Please set the **Code Wrap** to ``no wrap(head)`` (default is ``onLoad``) and
-**Franework** to ``No-library (pure JS)``.
-
-As Coffeescript requires this hack to work we can't add it to the list of 
-frameworks yet. Add a link to 
-https://github.com/jashkenas/coffee-script/raw/master/extras/coffee-script.js 
-as a **Resource** (:ref:`add_resources`).
-
-Example: http://jsfiddle.net/kaleb/neEp4/
 
 .. _paperscript_hack:
 
