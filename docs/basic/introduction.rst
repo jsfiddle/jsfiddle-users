@@ -53,8 +53,8 @@ hit ``ctrl`` + ``Enter`` key combination
 
 .. _result_draft:
 
-Draft
------
+Draft Page
+----------
 Only for registered users. Current result is saved in a **draft**. 
 
 One may access it by loading the http://jsfiddle.net/draft/. The shortcut 

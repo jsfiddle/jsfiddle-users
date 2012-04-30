@@ -2,6 +2,13 @@
 Frequently Asked Questions
 ==========================
 
+Code is working on jsFiddle, not on site/local machine
+######################################################
+
+Please compare the source on your page with the :ref:`result_draft`. Check 
+if your script loads all the specified libraries (check for 404 errors using 
+the web console in your browser). We do host some of the libraries, please
+upload them to your site before using.
 
 How can I name a fiddle?
 ########################
