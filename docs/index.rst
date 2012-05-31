@@ -33,8 +33,9 @@ Please join to the `jsfiddle-users mailing list
 
 .. note::
    Pronounce it as the single letters "j" and "s", and the word, 
-   "fiddle": /jay ess fid-uhl/ `(English Language & Usage) 
-   <http://english.stackexchange.com/questions/8688/pronunciation-of-jsfiddle>`_
+   "fiddle" (in `IPA`_, /ˈdʒeɪ.ɛs.ˈfɪ.dl/).
+
+.. _IPA: http://en.wikipedia.org/wiki/International_Phonetic_Alphabet
 
 
 Contents:
