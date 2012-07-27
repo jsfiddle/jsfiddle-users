@@ -41,7 +41,7 @@ Example
 =======
 
 Content of the http://github.com/zalun/jsFiddleGithubDemo/raw/master/Demo/demo.response.html 
-will be returned with *text/html* MIME type if this url will be loaded  ``http://jsfiddl.net/gh/get/response.html/zalun/jsFiddleGithubDemo/tree/master/Demo/`` using Ajax request.
+will be returned with *text/html* MIME type if this url will be loaded  ``http://jsfiddle.net/gh/get/response.html/zalun/jsFiddleGithubDemo/tree/master/Demo/`` using Ajax request.
 
 Here it is working within the `jsFiddle <http://jsfiddle.net/gh/get/mootools/1.2/zalun/jsFiddleGithubDemo/tree/master/Demo/>`_
 
