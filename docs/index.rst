@@ -16,7 +16,7 @@ Interview) <http://davidwalsh.name/jsfiddle-interview>`_
 
 News and announcements may be found on `the blog 
 <http://blog.jsfiddle.net/>`_. One can also follow us on `Twitter 
-<http://twitter.com/js_fiddle>`_, `Facebook 
+<http://twitter.com/jsfiddle>`_, `Facebook 
 <http://www.facebook.com/pages/jsFiddle/183790024998>`_ or meet "in person" 
 on IRC `#jsfiddle <irc://freenode/jsfiddle>`_.
 
