@@ -1,9 +1,9 @@
-========
-Download
-========
+=========
+Downloads
+=========
 
-Logo
-----
+Logos
+-----
 
 +--------------------------------------------------------------------+---------------------------------------------------------------------------+
 | .. figure:: /_static/corporate_design/jsfiddle-logo-thumb.png      | .. figure:: /_static/corporate_design/jsfiddle-logo-white-thumb.png       |
@@ -16,8 +16,8 @@ Logo
 +                                                                    |                                                                           |
 +--------------------------------------------------------------------+---------------------------------------------------------------------------+
 
-Wallpaper
----------
+Wallpapers
+----------
 
 .. figure:: /_static/wallpaper/jsfiddle-desktop-thumbnail-a.png 
    :align: center
@@ -30,10 +30,9 @@ Wallpaper
    :download:`[1024x768] </_static/wallpaper/jsfiddle-desktop-1024x768-a.png>` 
 
 
-Slides
-----------------------
+Presentations
+-------------
 
-* London Ajax User Group
- * :download:`Lightning Talk </_static/jsFiddle.pdf>` with numbers updated 24/9/2010
-* :download:`Keynote theme </_static/jsfiddle-keynote-theme.kth>`
+* London Ajax User Group, :download:`Lightning Talk </_static/jsFiddle.pdf>`, includes platform statistics from September 2010.
+* :download:`Presentation theme for Keynote </_static/jsfiddle-keynote-theme.kth>`
 
