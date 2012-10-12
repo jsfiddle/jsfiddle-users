@@ -8,3 +8,4 @@ environment
 *swp
 _build
 pip-log.txt
+docs/Makefile
