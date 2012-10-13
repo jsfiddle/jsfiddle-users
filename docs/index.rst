@@ -12,13 +12,23 @@ Welcome! This is the documentation for `jsFiddle <http://jsfiddle.net/>`_.
 Contents
 --------
 
+**Tutorial**
+Start here if you're new to jsFiddle.
+
 .. toctree::
    :maxdepth: 2
 
    basic/index.rst
    use/index.rst
    api/index.rst
-   meta/channels.rst
+
+
+**Other business**
+
+.. toctree::
+   :glob:
+
+   meta/*
 
 
 Other Resources

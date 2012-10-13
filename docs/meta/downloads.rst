@@ -2,6 +2,8 @@
 Downloads
 =========
 
+.. _logos:
+
 Logos
 -----
 
