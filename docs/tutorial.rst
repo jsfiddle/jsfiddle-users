@@ -208,7 +208,7 @@ when clicked.
 Well done
 """""""""
 
-Congratualations! You've created your first Fiddle with HTML, CSS and
+Congratulations! You've created your first Fiddle with HTML, CSS and
 JavaScript based on the MooTools library!
 
 **Did something not work?**
