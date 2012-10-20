@@ -223,6 +223,10 @@ Next steps
 
 You're ready to jump off into the world of jsFiddle.
 
+This tutorial example is based on Piotr's simple example - `Simple MooTools
+Delay <http://jsfiddle.net/zalun/NmudS/>`_, check out how it uses `delay()`
+to fade out the box this time.
+
 Now is a good time to look at some more complex examples and start
 experimenting.
 
