@@ -1,5 +1,5 @@
 ==========================
-Frequently Asked Questions
+Frequently asked questions
 ==========================
 
 Code is working on jsFiddle, not on site/local machine

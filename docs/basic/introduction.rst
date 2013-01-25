@@ -23,6 +23,7 @@ that is between ``<body>`` and ``</body>``.
 
 .. warning:: 
    Please do not enter ``doctype``, ``body`` etc. into the HTML panel.  These tags are placed automatically.  
+
 CSS
 ---
 Code entered in this panel will be placed in the header's style block, 
@@ -187,12 +188,11 @@ Info
 
 **Title**:
   will be used in the tittle bar of the jsFiddle. Only fiddles with the 
-  title will be displayed in your 
-  :ref:`public fiddle list <public-fiddle-list>`
+  title will be displayed in your public fiddle list.
 
 **Description**:
-  Please provide a description of the fiddle. It will be displayed in 
-  :ref:`public fiddle list <public-fiddle-list>`.
+  Please provide a description of the fiddle. It will be displayed in your
+  public fiddle list.
 
 **Body Tag**:
   One can change the body tag. It is usually done to change the styling as 
