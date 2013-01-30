@@ -14,5 +14,6 @@ Contents:
    embedding.rst
    echo.rst
    github.rst
+   firebug_lite.rst
    remote_debugging.rst
    hacks.rst
