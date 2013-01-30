@@ -16,7 +16,7 @@ jsFiddle makes it easy to debug fiddles with
    :align: right                                            
    :figwidth: 141px                                          
 
-After creating a fiddle plese click on the **Remote Button** (as displayed on 
+After creating a fiddle, please click on the **Remote Button** (as displayed on 
 the image on the right). A hashtag with the id for remote debugging will be 
 created. Further instructions will be displayed in the 
 :ref:`result-without-save`. 
