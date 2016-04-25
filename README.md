@@ -1,5 +1,9 @@
 # JSFiddle Issues
 
+## Public Roadmap:
+
+Our public roadmap is available here: **https://trello.com/b/LakLkQBW/jsfiddle-roadmap**
+
 ## Important:
 
 This repo is for issues for the current version of JSFiddle (0.5). Some reported bugs/improvements/features will never be implemented in this old version, **hence will be closed**. 
