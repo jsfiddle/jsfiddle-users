@@ -7,3 +7,10 @@ The future version of JSFiddle (currently being worked on), will have a complete
 ## Public Roadmap:
 
 Our public roadmap is available here: **https://trello.com/b/LakLkQBW/jsfiddle-roadmap**
+
+## Known issues:
+
+- External Resources sometimes load out of order
+- Panels sometimes overlap of go out of screen
+- Fiddle meta doesn't get passed to the UI when using Github Post API
+- ...
