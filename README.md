@@ -13,4 +13,5 @@ Our public roadmap is available here: **https://trello.com/b/LakLkQBW/jsfiddle-r
 - External Resources sometimes load out of order
 - Panels sometimes overlap of go out of screen
 - Fiddle meta doesn't get passed to the UI when using Github Post API
+- HTML comments in JavaScript panel
 - ...
