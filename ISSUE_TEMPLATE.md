@@ -1,7 +1,7 @@
 # Note on existing issues:
 
-- Known and minor issues will **not be addressed and most likely will be closed**
-- More info in README.md
+- ‼️ Known and minor issues will **not be addressed and most likely will be closed**
+- ‼️ More info in README.md
 
 # Library update request
 
