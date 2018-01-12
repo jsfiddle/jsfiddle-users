@@ -5,4 +5,4 @@
 
 # Library update request
 
-- Be sure your library (in the correct version) exits on cdnjs.org
+- Be sure your library (in the correct version) exists on cdnjs.org
