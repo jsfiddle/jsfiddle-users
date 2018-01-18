@@ -8,6 +8,12 @@ The future version of JSFiddle (currently being worked on), will have a complete
 
 Our public roadmap is available here: **https://trello.com/b/LakLkQBW/jsfiddle-roadmap**
 
+## Common questions:
+
+**Question:** I have a rouge fiddle in my listing that crashes the browser when loading, how can I fix this?
+
+> **Answer:** It's possible to add `?disable_render=true` to the end of URL's where fiddles are listed - this will disable the results tab, allowing you to remove the rouge fiddle.
+
 ## Known issues:
 
 - External Resources sometimes load out of order
