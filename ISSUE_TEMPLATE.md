@@ -1,8 +1,6 @@
-# Note on existing issues:
+‼️‼️‼️
 
-- ‼️ Known and minor issues will **not be addressed and most likely will be closed**
-- ‼️ More info in README.md
+Known issues (see README.md) will not be 
+addressed and most likely will be closed.
 
-# Library update request
-
-- Be sure your library (in the correct version) exists on cdnjs.org
+‼️‼️‼️
