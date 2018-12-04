@@ -12,3 +12,4 @@ Our public roadmap is available here: **https://trello.com/b/LakLkQBW/jsfiddle-r
 
 - Fiddle meta doesn't get passed to the UI when using Github Post API
 - Setting universal CSS selector `* {...}` breaks result frame, use `body * {...}` instead
+- Overwritting `window.name` in JS code, will break the editor after reloading the page
