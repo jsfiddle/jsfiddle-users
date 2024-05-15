@@ -1,6 +1,6 @@
 ## Links
 
-- [Documentation](https://github.com/jsfiddle/jsfiddle-users/wiki/Documentation) (Usage, API, etc)
+- [Documentation](https://docs.jsfiddle.net) (Usage, API, etc)
 
 ## Common questions:
 
