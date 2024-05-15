@@ -1,3 +1,7 @@
+## Links
+
+- [Documentation](https://github.com/jsfiddle/jsfiddle-users/wiki/Documentation) (Usage, API, etc)
+
 ## Common questions:
 
 **Question:** I have a rogue fiddle in my listing that crashes the browser when loading, how can I fix this?
