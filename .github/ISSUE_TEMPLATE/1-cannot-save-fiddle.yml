@@ -16,8 +16,8 @@ body:
     attributes:
       label: Were you logged in?
       options:
-        - Yes
-        - No
+        - "Yes"
+        - "No"
     validations:
       required: true
   - type: input
