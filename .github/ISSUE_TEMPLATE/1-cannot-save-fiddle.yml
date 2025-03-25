@@ -6,16 +6,16 @@ body:
   - type: input
     id: error-code
     attributes:
-      label: Error code
-      description: Error code
+      label: "Error code"
+      description: "Error code"
       placeholder: ERRW:0.6K0.3PU:1.0
     validations:
       required: true
   - type: checkboxes
     id: logged-in
     attributes:
-      label: Were you logged in?
-      description: Were you logged in?
+      label: "Were you logged in?"
+      description: "Were you logged in?"
       options:
         - label: Yes
         - label: No
@@ -24,32 +24,32 @@ body:
   - type: input
     id: username
     attributes:
-      label: Your username (if logged in)
-      description: Your username (if logged in)
+      label: "Your username (if logged in)"
+      description: "Your username (if logged in)"
       placeholder: j0hndoe
     validations:
       required: false
   - type: textarea
     id: html
     attributes:
-      label: Your HTML
-      description: Your HTML
+      label: "Your HTML"
+      description: "Your HTML"
       placeholder: <p>...</p>
     validations:
       required: false
   - type: textarea
     id: javascript
     attributes:
-      label: Your JavaScript
-      description: Your JavaScript
+      label: "Your JavaScript"
+      description: "Your JavaScript"
       placeholder: console.log(...)
     validations:
       required: false
   - type: textarea
     id: css
     attributes:
-      label: Your CSS
-      description: Your CSS
+      label: "Your CSS"
+      description: "Your CSS"
       placeholder: p { ... }
     validations:
       required: false
