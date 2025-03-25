@@ -32,7 +32,9 @@ body:
     attributes:
       label: Your HTML
       description: You have to provide at least one of HTML, CSS or JavaScript
-      placeholder: <p>...</p>
+      placeholder: |
+        <p>...</p>
+      render: html
     validations:
       required: false
   - type: textarea
@@ -40,7 +42,11 @@ body:
     attributes:
       label: Your JavaScript
       description: You have to provide at least one of HTML, CSS or JavaScript
-      placeholder: console.log(...)
+      placeholder: |
+        if (greet === "hello"){
+          ...
+        }
+      render: javascript
     validations:
       required: false
   - type: textarea
