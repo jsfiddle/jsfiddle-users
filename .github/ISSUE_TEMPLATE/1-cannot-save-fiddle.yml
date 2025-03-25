@@ -48,6 +48,10 @@ body:
     attributes:
       label: Your CSS
       description: You have to provide at least one of HTML, CSS or JavaScript
-      placeholder: p { ... }
+      placeholder: |
+        p {
+          color: rgba(0, 0, 0, 0.1);
+        }
+      render: css
     validations:
       required: false
