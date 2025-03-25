@@ -1,6 +1,6 @@
-name: Bug Report
+name: 🤖 Cannot save fiddle
 description: Problems with saving a fiddle. Report with no code provided will be removed.
-title: "Cannot save fiddle"
+title: "🤖 Cannot save fiddle"
 labels: ["task"]
 body:
   - type: input
