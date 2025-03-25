@@ -9,7 +9,6 @@ body:
       label: Error code
       description: Error code
       placeholder: ERRW:0.6K0.3PU:1.0
-      render: code
     validations:
       required: true
   - type: dropdown
@@ -19,7 +18,6 @@ body:
       options:
         - "Yes"
         - "No"
-      render: code
     validations:
       required: true
   - type: input
@@ -27,7 +25,6 @@ body:
     attributes:
       label: Your username (if logged in)
       placeholder: j0hndoe
-      render: code
     validations:
       required: false
   - type: textarea
