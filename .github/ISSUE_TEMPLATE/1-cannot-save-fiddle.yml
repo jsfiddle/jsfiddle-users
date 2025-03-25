@@ -11,22 +11,19 @@ body:
       placeholder: ERRW:0.6K0.3PU:1.0
     validations:
       required: true
-  - type: checkboxes
+  - type: dropdown
     id: logged-in
     attributes:
       label: Were you logged in?
-      description: Were you logged in?
       options:
-        - label: "Yes"
-        - label: "No"
-        - required: true
+        - Yes
+        - No
     validations:
       required: true
   - type: input
     id: username
     attributes:
       label: Your username (if logged in)
-      description: Your username (if logged in)
       placeholder: j0hndoe
     validations:
       required: false
