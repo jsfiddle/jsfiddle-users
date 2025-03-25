@@ -1,5 +1,5 @@
 name: Bug Report
-description: File a bug report.
+description: Problems with saving a fiddle. Report with no code provided will be removed.
 title: "Cannot save fiddle"
 labels: ["task"]
 body:
@@ -31,7 +31,7 @@ body:
     id: html
     attributes:
       label: Your HTML
-      description: Your HTML
+      description: You have to provide at least one of HTML, CSS or JavaScript
       placeholder: <p>...</p>
     validations:
       required: false
@@ -39,7 +39,7 @@ body:
     id: javascript
     attributes:
       label: Your JavaScript
-      description: Your JavaScript
+      description: You have to provide at least one of HTML, CSS or JavaScript
       placeholder: console.log(...)
     validations:
       required: false
@@ -47,7 +47,7 @@ body:
     id: css
     attributes:
       label: Your CSS
-      description: Your CSS
+      description: You have to provide at least one of HTML, CSS or JavaScript
       placeholder: p { ... }
     validations:
       required: false
