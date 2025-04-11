@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balance System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap">
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
+    import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
+    import { getFirestore } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js';
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA30KmOsLxBdUA08karsp8CEWAL3-xWaUo",
+      authDomain: "adex-eb319.firebaseapp.com",
+      projectId: "adex-eb319",
+      storageBucket: "adex-eb319.firebasestorage.app",
+      messagingSenderId: "685844431037",
+      appId: "1:685844431037:web:2540b8fb9436b9d5e937d4",
+      measurementId: "G-EWVQQZW18K"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    window.auth = getAuth(app);
+    window.db = getFirestore(app);
+  </script>
+  <style>
+    :root {
+      --primary: #6C5CE7;
+      --primary-dark: #5649C0;
+      --accent: #FF7675;
+      --success: #00B894;
+      --warning: #FDCB6E;
+      --background: #F5F6FA;
+      --surface: #FFFFFF;
+      --text: #2D3436;
+      --text-secondary: #636E72;
+      --divider: #DFE6E9;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+      --shadow-md: 0 6px 12px rgba(0,0,0,0.15);
+      --border-radius: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+    body { background: var(--background); color: var(--text); min-height: 100vh; display: flex; justify-content: center; }
+    .app-container { max-width: 400px; width: 100%; background: var(--surface); min-height: 100vh; display: flex; flex-direction: column; box-shadow: var(--shadow-md); }
+    .main-content { flex: 1; padding: 1rem; overflow-y: auto; }
+    .balance-card { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); padding: 1rem; margin-bottom: 1rem; border-radius: var(--border-radius); color: #fff; box-shadow: var(--shadow-md); position: relative; overflow: hidden; }
+    .balance-info { flex: 1; }
+    .balance-label { font-size: .8rem; opacity: .9; }
+    .balance-amount { font-size: 1.5rem; font-weight: 700; margin: .25rem 0; }
+    .notification-bell { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; position: absolute; top: 1rem; right: 1rem; }
+    .notification-bell:hover { background: rgba(255,255,255,.3); }
+    .notification-bell.unread::after { content: ''; position: absolute; top: 5px; right: 5px; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+    .notification-ticker { width: 100%; height: 1.2rem; overflow: hidden; margin-top: .5rem; }
+    .notification-text { display: inline-block; font-size: .75rem; color: rgba(255,255,255,.9); white-space: nowrap; animation: marquee 15s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+    .stat-card { background: var(--surface); border-radius: var(--border-radius); padding: .75rem; box-shadow: var(--shadow-sm); text-align: center; }
+    .stat-value { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+    .stat-label { font-size: .7rem; color: var(--text-secondary); }
+    .activity-section { background: var(--surface); border-radius: var(--border-radius); padding: .75rem; box-shadow: var(--shadow-sm); margin-bottom: 1rem; }
+    .activity-title { font-size: 1rem; font-weight: 600; margin-bottom: .75rem; }
+    .withdraw-section { padding: 1rem; }
+    .form-group { margin-bottom: .75rem; position: relative; }
+    .form-label { font-size: 1rem; font-weight: 500; margin-bottom: .25rem; }
+    .form-input { width: 100%; padding: .5rem; border: 1px solid var(--divider); border-radius: var(--border-radius); font-size: .85rem; transition: border-color .2s; }
+    .form-input:focus { outline: none; border-color: var(--primary); }
+    .submit-btn { width: 100%; padding: .75rem; background: var(--primary); color: #fff; border: none; border-radius: var(--border-radius); font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .2s; }
+    .submit-btn:hover { background: var(--primary-dark); }
+    .submit-btn:disabled { background: var(--text-secondary); cursor: not-allowed; }
+    .transaction-history { margin-top: 1rem; }
+    .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .75rem; }
+    .history-title { font-size: 1rem; font-weight: 600; }
+    .history-filter { display: flex; gap: .5rem; }
+    .filter-btn { background: var(--surface); border: 1px solid var(--divider); border-radius: 6px; padding: .25rem .5rem; font-size: .75rem; color: var(--text-secondary); cursor: pointer; transition: all .2s; }
+    .filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .filter-btn:hover:not(.active) { border-color: var(--primary); }
+    #historyList { max-height: 150px; overflow-y: auto; padding-right: .25rem; }
+    #historyList::-webkit-scrollbar { width: 6px; }
+    #historyList::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+    #historyList::-webkit-scrollbar-track { background: var(--divider); }
+    .history-item { display: flex; align-items: center; gap: .75rem; padding: .5rem; background: var(--surface); border-radius: 8px; margin-bottom: .5rem; box-shadow: var(--shadow-sm); transition: transform .2s; }
+    .history-item:hover { transform: translateY(-2px); }
+    .history-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .history-icon.withdraw { background: rgba(253,203,110,.1); color: var(--warning); }
+    .history-details { flex: 1; }
+    .history-amount { font-size: .9rem; font-weight: 600; color: var(--warning); }
+    .history-info { font-size: .9rem; font-weight: 500; }
+    .history-date { font-size: .7rem; color: var(--text-secondary); }
+    .profile-section { padding: 1rem; }
+    .profile-avatar { width: 80px; height: 80px; background: rgba(108,92,231,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto .75rem; }
+    .profile-name { font-size: 1.2rem; font-weight: 600; text-align: center; margin-bottom: .25rem; }
+    .profile-info { font-size: .8rem; color: var(--text-secondary); text-align: center; margin-bottom: 1rem; }
+    .referral-section { margin-top: 1rem; }
+    .referral-stats { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: .75rem; }
+    .hidden { display: none; }
+    .ad-container { padding: .5rem; }
+    .ad-preview { display: flex; align-items: center; gap: .75rem; padding: .5rem; background: rgba(108,92,231,.1); border-radius: var(--border-radius); margin-bottom: .5rem; cursor: pointer; }
+    .ad-info { flex: 1; }
+    .ad-title { font-weight: 600; font-size: .9rem; }
+    .ad-reward { font-size: .75rem; color: var(--success); }
+    .ad-stats { margin-top: .75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .payment-methods { display: flex; gap: .5rem; margin-bottom: 1rem; }
+    .payment-btn { flex: 1; padding: .5rem; background: var(--surface); border: 1px solid var(--divider); border-radius: var(--border-radius); cursor: pointer; text-align: center; font-size: .85rem; transition: all .2s; }
+    .payment-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .payment-btn:hover:not(.active) { border-color: var(--primary); }
+    .phone-bill-options, .phone-bill-types { display: flex; gap: .5rem; margin-top: .5rem; flex-wrap: wrap; }
+    .phone-bill-btn, .phone-bill-type-btn { padding: .5rem 1rem; background: var(--surface); border: 1px solid var(--divider); border-radius: var(--border-radius); cursor: pointer; font-size: .85rem; transition: all .2s; }
+    .phone-bill-btn.active, .phone-bill-type-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .phone-bill-btn:hover:not(.active), .phone-bill-type-btn:hover:not(.active) { border-color: var(--primary); }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.5); justify-content: center; align-items: center; z-index: 1000; }
+    .modal-content { background: var(--surface); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md); max-width: 350px; width: 90%; position: relative; overflow: hidden; }
+    .modal-header { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--success); text-align: center; }
+    .modal-divider { border-bottom: 2px solid var(--divider); margin-bottom: 1rem; opacity: .7; }
+    .modal-body { font-size: .85rem; color: var(--text); position: relative; z-index: 1; }
+    .modal-info-grid { display: grid; grid-template-columns: auto 1fr; gap: .75rem .5rem; align-items: center; justify-content: space-between; }
+    .modal-info-grid .label { font-weight: 600; color: var(--text-secondary); text-align: left; white-space: nowrap; }
+    .modal-info-grid .value { font-weight: 500; color: var(--primary); text-align: right; word-break: break-word; }
+    .modal-watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg); font-size: 1.4rem; font-weight: 600; color: rgba(108,92,231,.2); pointer-events: none; text-align: center; line-height: 1.0; text-transform: uppercase; z-index: 0; font-family: 'Caveat', cursive; }
+    .modal-watermark span { display: block; position: relative; }
+    .modal-watermark span::before { content: ''; position: absolute; top: 50%; left: -10%; right: -10%; height: 2px; background: rgba(108,92,231,.3); transform: translateY(-50%); }
+    .screenshot-notice { color: #8A2BE2; font-weight: 600; text-align: center; margin: 1rem 0; animation: blink 1s infinite; font-size: .9rem; }
+    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+    .telegram-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+    .telegram-links a { color: var(--primary); font-size: 2rem; transition: transform .2s; }
+    .telegram-links a:hover { transform: scale(1.1); color: var(--primary-dark); }
+    .screenshot-divider { border: none; border-top: 2px solid var(--divider); margin: 1rem auto; width: 80%; opacity: .7; }
+    .cooldown-container { text-align: center; margin-top: 1rem; font-size: .9rem; color: var(--text-secondary); font-weight: 600; }
+    .cooldown-container.disabled { color: #FF4444; }
+    .error-message { color: #FF4444; font-size: .45rem; margin-top: .25rem; display: none; font-weight: 500; }
+    .form-group.invalid .form-input { border-color: #FF4444; box-shadow: 0 0 5px rgba(255, 68, 68, 0.5); }
+    .form-group.invalid .error-message { display: block; }
+    .notification-modal { position: fixed; top: 0; right: -300px; width: 300px; height: 100%; background: rgba(0,0,0,.5); z-index: 1000; transition: right .3s ease-in-out; pointer-events: none; }
+    .notification-modal.visible { right: 0; }
+    .notification-modal-content { background: var(--surface); box-shadow: -4px 0 12px rgba(0,0,0,.2); display: flex; flex-direction: column; height: 100%; padding: .75rem; pointer-events: auto; }
+    .notification-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: .5rem; border-bottom: 1px solid var(--divider); }
+    .notification-title { font-size: 1rem; font-weight: 600; color: var(--primary); }
+    .notification-actions { display: flex; gap: .5rem; }
+    .notification-btn { background: rgba(0,0,0,.05); border: 1px solid var(--divider); color: var(--text-secondary); font-size: 1rem; cursor: pointer; padding: .4rem; border-radius: 6px; transition: color .2s, transform .2s, background .2s; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+    .notification-btn:hover { background: rgba(0,0,0,.1); transform: scale(1.1); }
+    .notification-btn.close-btn:hover { color: var(--accent); }
+    .notification-btn.confirm-btn:hover { color: var(--success); }
+    .notification-progress { margin: .5rem 0; font-size: .75rem; color: var(--text-secondary); display: flex; align-items: center; gap: .5rem; }
+    .notification-progress span { color: var(--accent); font-weight: 600; }
+    .progress-bar { flex: 1; height: 3px; background: var(--divider); border-radius: 1.5px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--primary); transition: width .3s ease; }
+    .notification-list { flex: 1; overflow-y: auto; padding-right: .25rem; }
+    .notification-list::-webkit-scrollbar { width: 6px; }
+    .notification-list::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+    .notification-list::-webkit-scrollbar-track { background: var(--divider); }
+    .notification-item { display: flex; align-items: center; gap: .5rem; padding: .5rem; background: var(--surface); border-radius: 6px; margin-bottom: .25rem; box-shadow: var(--shadow-sm); transition: transform .2s, background .2s; cursor: pointer; }
+    .notification-item.unread { background: rgba(108,92,231,.05); border-left: 3px solid var(--primary); }
+    .notification-item:hover { transform: translateY(-1px); background: rgba(0,0,0,.03); }
+    .notification-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(108,92,231,.1); color: var(--primary); font-size: 1rem; }
+    .notification-details { flex: 1; }
+    .notification-message { font-size: .85rem; font-weight: 500; color: var(--text); }
+    .notification-time { font-size: .65rem; color: var(--text-secondary); }
+    .dismiss-btn { background: none; border: none; color: var(--text-secondary); font-size: .9rem; cursor: pointer; padding: .2rem; opacity: 0; transition: opacity .2s; }
+    .notification-item:hover .dismiss-btn { opacity: 1; }
+    .social-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; }
+    .social-links a { color: var(--primary); font-size: 1.8rem; transition: transform .2s, color .2s; padding: .5rem; border-radius: 50%; }
+    .social-links a:hover { transform: scale(1.2); color: var(--primary-dark); }
+    .fixed-nav { position: fixed; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-around; align-items: center; background: var(--surface); border-top: 1px solid var(--divider); padding: .5rem 0; z-index: 10; max-width: 400px; margin: 0 auto; }
+    .nav-btn { flex: 1; display: flex; justify-content: center; align-items: center; height: 48px; color: var(--text-secondary); transition: color .2s; }
+    .nav-btn:hover, .nav-btn.active { color: var(--primary); }
+    .modal-actions { display: flex; gap: .5rem; padding: .5rem; justify-content: center; }
+    .confirm-btn { width: 48%; padding: .5rem; font-size: .85rem; }
+    .confirm-btn.cancel { background: var(--accent); }
+    .confirm-btn.cancel:hover { background: #E55C5B; }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <main class="main-content" id="homeScreen">
+      <div class="balance-card">
+        <div class="balance-info">
+          <div class="balance-label">Available Balance</div>
+          <div class="balance-amount" id="balance">5,000 MMK</div>
+        </div>
+        <div class="notification-bell" id="notificationBell"><i class="fas fa-bell"></i></div>
+        <div class="notification-ticker">
+          <span class="notification-text" id="notificationTicker">Notifications: Welcome to the Balance System!</span>
+        </div>
+        <div class="notification-modal hidden" id="notificationPanel">
+          <div class="notification-modal-content">
+            <div class="notification-header">
+              <h3 class="notification-title">Notifications</h3>
+              <div class="notification-actions">
+                <button class="notification-btn confirm-btn" id="confirmNotifications"><i class="fas fa-check"></i></button>
+                <button class="notification-btn close-btn" id="closeNotifications"><i class="fas fa-times"></i></button>
+              </div>
+            </div>
+            <div class="notification-progress">
+              <span id="unreadCount">0</span>
+              <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value" id="totalTransactions">0</div><div class="stat-label">Total Transactions</div></div>
+        <div class="stat-card"><div class="stat-value" id="totalEarnings">0</div><div class="stat-label">Total Earnings</div></div>
+      </div>
+      <section class="activity-section" id="adSection">
+        <h3 class="activity-title">Earn by Watching Ads</h3>
+        <div class="ad-container">
+          <div class="ad-preview" id="watchAdBtn">
+            <i class="fas fa-play-circle"></i>
+            <div class="ad-info"><div class="ad-title">Watch Ad to Earn</div><div class="ad-reward">+5 MMK</div></div>
+          </div>
+          <div class="ad-stats">
+            <div class="stat-card"><div class="stat-value" id="adsWatched">0</div><div class="stat-label">Ads Watched</div></div>
+            <div class="stat-card"><div class="stat-value" id="adEarnings">0 MMK</div><div class="stat-label">Ad Earnings</div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <main class="main-content hidden" id="withdrawScreen">
+      <section class="withdraw-section">
+        <div class="form-group">
+          <label class="form-label">Payment Method</label>
+          <div class="payment-methods">
+            <button class="payment-btn active" data-method="kpay">KPay</button>
+            <button class="payment-btn" data-method="wavepay">WavePay</button>
+            <button class="payment-btn" data-method="phonebill">Phone Bill</button>
+          </div>
+        </div>
+        <div id="kpayFields" class="method-fields">
+          <div class="form-group"><label class="form-label">Account Name</label><input type="text" class="form-input" id="kpayName" placeholder="Your name"><div class="error-message" id="kpayNameError">အမည် လိုအပ်ပါသည်</div></div>
+          <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input" id="kpayNumber" placeholder="09xxxxxxxxx"><div class="error-message" id="kpayNumberError">09 နှင့်စပြီး ၁၁ လုံးဖြစ်ရမည်</div></div>
+          <div class="form-group"><label class="form-label">Amount (MMK)</label><input type="number" class="form-input" id="kpayAmount" placeholder="Min 100" min="100"><div class="error-message" id="kpayAmountError">အနည်းဆုံး ၁၀၀ MMK ဖြစ်ရမည်</div></div>
+          <div class="form-group"><label class="form-label">Comment</label><input type="text" class="form-input" id="kpayComment" placeholder="Enter your comment"><div class="error-message" id="kpayCommentError">မှတ်ချက် လိုအပ်ပါသည်</div></div>
+        </div>
+        <div id="wavepayFields" class="method-fields hidden">
+          <div class="form-group"><label class="form-label">Account Name</label><input type="text" class="form-input" id="wavepayName" placeholder="Your name"><div class="error-message" id="wavepayNameError">အမည် လိုအပ်ပါသည်</div></div>
+          <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input" id="wavepayNumber" placeholder="09xxxxxxxxx"><div class="error-message" id="wavepayNumberError">09 နှင့်စပြီး ၁၁ လုံးဖြစ်ရမည်</div></div>
+          <div class="form-group"><label class="form-label">Amount (MMK)</label><input type="number" class="form-input" id="wavepayAmount" placeholder="Min 100" min="100"><div class="error-message" id="wavepayAmountError">အနည်းဆုံး ၁၀၀ MMK ဖြစ်ရမည်</div></div>
+          <div class="form-group"><label class="form-label">Comment</label><input type="text" class="form-input" id="wavepayComment" placeholder="Enter your comment"><div class="error-message" id="wavepayCommentError">မှတ်ချက် လိုအပ်ပါသည်</div></div>
+        </div>
+        <div id="phonebillFields" class="method-fields hidden">
+          <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input" id="phonebillNumber" placeholder="09xxxxxxxxx"><div class="error-message" id="phonebillNumberError">09 နှင့်စပြီး ၁၁ လုံးဖြစ်ရမည်</div></div>
+          <div class="form-group"><label class="form-label">Select Operator</label><div class="phone-bill-types"><button class="phone-bill-type-btn" data-type="atom">ATOM</button><button class="phone-bill-type-btn" data-type="mpt">MPT</button><button class="phone-bill-type-btn" data-type="mytel">Mytel</button><button class="phone-bill-type-btn" data-type="ooredoo">Ooredoo</button></div><div class="error-message" id="phonebillTypeError">အော်ပရေတာ ရွေးချယ်ပါ</div></div>
+          <div class="form-group"><label class="form-label">Select Amount (MMK)</label><div class="phone-bill-options"><button class="phone-bill-btn" data-amount="1000">1000</button><button class="phone-bill-btn" data-amount="3000">3000</button><button class="phone-bill-btn" data-amount="5000">5000</button><button class="phone-bill-btn" data-amount="10000">10000</button></div><div class="error-message" id="phonebillAmountError">ပမာဏ ရွေးချယ်ပါ</div></div>
+          <div class="form-group"><label class="form-label">Comment</label><input type="text" class="form-input" id="phonebillComment" placeholder="Enter your comment"><div class="error-message" id="phonebillCommentError">မှတ်ချက် လိုအပ်ပါသည်</div></div>
+        </div>
+        <button class="submit-btn" id="confirmWithdraw">Withdraw Now</button>
+        <div class="transaction-history" id="historyList">
+          <div class="history-header">
+            <h3 class="history-title">Transaction History</h3>
+            <div class="history-filter">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="withdraw">Withdrawals</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <main class="main-content hidden" id="profileScreen">
+      <section class="profile-section">
+        <div class="profile-avatar"><i class="fas fa-user"></i></div>
+        <h4 class="profile-name" id="profileName">User</h4>
+        <p class="profile-info" id="profileJoinDate">Joined: April 2025</p>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-value" id="profileTransactions">0</div><div class="stat-label">Total Transactions</div></div>
+          <div class="stat-card"><div class="stat-value" id="profileEarnings">0 MMK</div><div class="stat-label">Total Earnings</div></div>
+          <div class="stat-card"><div class="stat-value" id="profileBalance">5,000 MMK</div><div class="stat-label">Current Balance</div></div>
+          <div class="stat-card"><div class="stat-value" id="profileReferrals">0</div><div class="stat-label">Referrals</div></div>
+        </div>
+        <div class="referral-section">
+          <h3 class="activity-title">Referral Program</h3>
+          <div class="form-group">
+            <label class="form-label">Your Referral Code</label>
+            <input type="text" class="form-input" id="referralCode" readonly value="REF123">
+          </div>
+          <button class="submit-btn" id="copyReferralBtn">Copy Referral Code</button>
+          <div class="referral-stats">
+            <div class="stat-card"><div class="stat-value" id="referralBonus">0 MMK</div><div class="stat-label">Referral Bonus</div></div>
+            <div class="stat-card"><div class="stat-value" id="referralCount">0</div><div class="stat-label">Active Referrals</div></div>
+          </div>
+        </div>
+        <div class="social-media-section">
+          <h3 class="activity-title" style="font-size: 1.5rem;">Follow Us</h3>
+          <div class="social-links">
+            <a href="https://www.facebook.com/share/16ZrKfUgv3/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://t.me/akpyavj" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://www.tiktok.com/@fygutt1" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="fixed-nav">
+      <button class="nav-btn active" id="homeBtn"><i class="fas fa-home"></i></button>
+      <button class="nav-btn" id="withdrawBtn"><i class="fas fa-money-bill-wave"></i></button>
+      <button class="nav-btn" id="profileBtn"><i class="fas fa-user"></i></button>
+    </nav>
+  </div>
+
+  <div class="modal" id="withdrawModal">
+    <div class="modal-content">
+      <div class="modal-watermark" id="watermarkText"></div>
+      <div class="modal-header">လုပ်ဆောင်မှုအောင်မြင်</div>
+      <div class="modal-divider"></div>
+      <div class="modal-body" id="modalBody">
+        <div class="modal-info-grid">
+          <span class="label">အသုံးပြုသူအမည်</span><span class="value" id="modalUserName"></span>
+          <span class="label">လုပ်ဆောင်ချိန်</span><span class="value" id="modalTime"></span>
+          <span class="label">လုပ်ဆောင်မှုအမှတ်</span><span class="value" id="modalTransactionId"></span>
+          <span class="label">လုပ်ဆောင်မှုအမျိုးအစား</span><span class="value" id="modalType"></span>
+          <span class="label">ငွေပေးချေမှုနည်းလမ်း</span><span class="value" id="modalMethod"></span>
+          <span class="label">လွှဲပို့မည့်နေရာ</span><span class="value" id="modalDestination"></span>
+          <span class="label">ပမာဏ</span><span class="value" id="modalAmount"></span>
+          <span class="label">လက်ကျန်ငွေ</span><span class="value" id="modalBalance"></span>
+          <span class="label">မှတ်ချက်</span><span class="value" id="modalComment"></span>
+        </div>
+        <p class="screenshot-notice">Screenshot ရိုက်ပြီး အောက်ပါလိပ်စာများသို့ ပို့ပါ</p>
+        <hr class="screenshot-divider">
+        <div class="telegram-links">
+          <a href="https://invite.viber.com/?g2=AQB6%2FZ3rx1MvnlSEHYMw%2BUJ9J1ku%2FuTRfRU4Otyq0CIG1UZgWrlhzEE979IIHcRy" target="_blank" rel="noopener noreferrer"><i class="fab fa-viber"></i></a>
+          <a href="https://m.me/606402882553209?source=qr_link_share" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-messenger"></i></a>
+          <a href="https://t.me/Xcode299" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i></a>
+          <a href="https://t.me/Seller22025" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+        <div class="cooldown-container" id="cooldownTimer">Waiting: 30s</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="confirmModal">
+    <div class="modal-content">
+      <div class="modal-header">Confirmation</div>
+      <div class="modal-divider"></div>
+      <div class="modal-body">
+        <p style="font-size: .75rem; text-align: center;">သင်ငွေထုတ်မှုအသေးစိတ်ကို Screenshot ရိုက်ပြီးပြီလား 📸 ❓</p>
+        <p style="font-size: .75rem; text-align: center;">ပေးထားသော လင့်များသို့ ပို့ဆောင်ပြီးကြောင်း သေချာပါစေ 🔴</p>
+      </div>
+      <div class="modal-actions">
+        <button class="submit-btn confirm-btn" id="confirmYes">Yes</button>
+        <button class="submit-btn confirm-btn cancel" id="confirmNo">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { signInAnonymously } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
+    import { doc, setDoc, getDoc, updateDoc, addDoc, collection, onSnapshot, query, where, getDocs, increment } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js';
+
+    // Configuration
+    const CONFIG = {
+      MIN_WITHDRAWAL: 100,
+      PHONE_BILL_AMOUNTS: [1000, 3000, 5000, 10000],
+      REFERRAL_BONUS: 20,
+      COOLDOWN_DURATION: 30,
+      AD_REWARD: 5,
+      MAX_HISTORY: 5,
+      MAX_NOTIFICATIONS: 20
+    };
+
+    // State Management
+    class State {
+      constructor() {
+        this.userId = null;
+        this.balance = 5000;
+        this.totalTransactions = 0;
+        this.totalEarnings = 0;
+        this.history = [];
+        this.currentScreen = 'home';
+        this.referrals = 0;
+        this.referralBonus = 0;
+        this.username = this.generateUsername();
+        this.referralCode = this.generateReferralCode();
+        this.joinDate = new Date().toLocaleString('default', { month: 'long', year: 'numeric' });
+        this.adsWatched = 0;
+        this.adEarnings = 0;
+        this.isProcessing = false;
+        this.selectedMethod = 'kpay';
+        this.selectedPhoneBillAmount = null;
+        this.selectedPhoneBillType = null;
+        this.referredBy = new URLSearchParams(window.location.search).get('ref');
+        this.isCooldownActive = false;
+        this.notifications = [];
+        this.unreadCount = 0;
+        this.historyFilter = 'all';
+      }
+
+      generateUsername() {
+        const adjectives = ['Happy', 'Lucky', 'Smart', 'Cool', 'Brave'];
+        const nouns = ['Star', 'Tiger', 'Eagle', 'Wizard', 'Hero'];
+        const randomAdj = adjectives[Math.floor(Math.random() * adjectives.length)];
+        const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
+        const randomNum = Math.floor(Math.random() * 1000);
+        return `${randomAdj}${randomNoun}${randomNum}`;
+      }
+
+      generateReferralCode() {
+        return 'REF' + Math.random().toString(36).substring(2, 8).toUpperCase();
+      }
+
+      async init() {
+        try {
+          const userCredential = await signInAnonymously(window.auth);
+          this.userId = userCredential.user.uid;
+          console.log('Signed in with userId:', this.userId);
+
+          const userRef = doc(window.db, 'users', this.userId);
+          const userDoc = await getDoc(userRef);
+
+          if (!userDoc.exists()) {
+            await setDoc(userRef, {
+              username: this.username,
+              balance: this.balance,
+              referralCode: this.referralCode,
+              referrals: this.referrals,
+              referralBonus: this.referralBonus,
+              adEarnings: this.adEarnings,
+              totalEarnings: this.totalEarnings,
+              totalTransactions: this.totalTransactions,
+              adsWatched: this.adsWatched,
+              createdAt: new Date().toISOString(),
+              joinDate: this.joinDate,
+              referredBy: this.referredBy || null
+            });
+            console.log('Created new user document:', this.userId);
+
+            if (this.referredBy) {
+              await this.handleReferral();
+            }
+          } else {
+            const data = userDoc.data();
+            this.username = data.username;
+            this.balance = data.balance;
+            this.referralCode = data.referralCode;
+            this.referrals = data.referrals || 0;
+            this.referralBonus = data.referralBonus || 0;
+            this.adEarnings = data.adEarnings || 0;
+            this.totalEarnings = data.totalEarnings || 0;
+            this.totalTransactions = data.totalTransactions || 0;
+            this.adsWatched = data.adsWatched || 0;
+            this.joinDate = data.joinDate;
+            this.referredBy = data.referredBy || null;
+            console.log('Loaded user document:', this.userId);
+          }
+
+          this.listenForUserData();
+          this.listenForHistory();
+          this.listenForNotifications();
+          this.listenForReferrals();
+        } catch (error) {
+          console.error('State init error:', error);
+        }
+      }
+
+      async handleReferral() {
+        try {
+          const usersRef = collection(window.db, 'users');
+          const q = query(usersRef, where('referralCode', '==', this.referredBy));
+          const querySnapshot = await getDocs(q);
+
+          if (!querySnapshot.empty) {
+            const referrerDoc = querySnapshot.docs[0];
+            const referrerId = referrerDoc.id;
+
+            await addDoc(collection(window.db, 'referrals'), {
+              referrerId: referrerId,
+              referredId: this.userId,
+              bonus: CONFIG.REFERRAL_BONUS,
+              createdAt: new Date().toISOString()
+            });
+
+            const referrerRef = doc(window.db, 'users', referrerId);
+            await updateDoc(referrerRef, {
+              balance: increment(CONFIG.REFERRAL_BONUS),
+              referrals: increment(1),
+              referralBonus: increment(CONFIG.REFERRAL_BONUS),
+              totalEarnings: increment(CONFIG.REFERRAL_BONUS)
+            });
+
+            console.log('Referral processed:', this.referredBy);
+          }
+        } catch (error) {
+          console.error('Referral error:', error);
+        }
+      }
+
+      listenForUserData() {
+        const userRef = doc(window.db, 'users', this.userId);
+        onSnapshot(userRef, (doc) => {
+          if (doc.exists()) {
+            const data = doc.data();
+            this.balance = data.balance;
+            this.referrals = data.referrals || 0;
+            this.referralBonus = data.referralBonus || 0;
+            this.adEarnings = data.adEarnings || 0;
+            this.totalEarnings = data.totalEarnings || 0;
+            this.totalTransactions = data.totalTransactions || 0;
+            this.adsWatched = data.adsWatched || 0;
+            this.updateUI();
+          }
+        });
+      }
+
+      listenForHistory() {
+        const historyQuery = query(collection(window.db, 'withdrawals'), where('userId', '==', this.userId));
+        onSnapshot(historyQuery, (snapshot) => {
+          this.history = [];
+          snapshot.forEach((doc) => {
+            this.history.push({ id: doc.id, ...doc.data() });
+          });
+          this.updateUI();
+        });
+      }
+
+      listenForNotifications() {
+        const notifQuery = query(collection(window.db, 'notifications'), where('userId', '==', this.userId));
+        onSnapshot(notifQuery, (snapshot) => {
+          this.notifications = [];
+          this.unreadCount = 0;
+          snapshot.forEach((doc) => {
+            const notif = { id: doc.id, ...doc.data() };
+            this.notifications.push(notif);
+            if (!notif.read) this.unreadCount++;
+          });
+          this.updateUI();
+        });
+      }
+
+      listenForReferrals() {
+        const referralsRef = collection(window.db, 'referrals');
+        const q = query(referralsRef, where('referrerId', '==', this.userId));
+        onSnapshot(q, (snapshot) => {
+          this.referrals = snapshot.size;
+          this.updateUI();
+        });
+      }
+
+      async saveToFirestore() {
+        try {
+          await updateDoc(doc(window.db, 'users', this.userId), {
+            balance: this.balance,
+            totalTransactions: this.totalTransactions,
+            totalEarnings: this.totalEarnings,
+            adsWatched: this.adsWatched,
+            adEarnings: this.adEarnings,
+            referrals: this.referrals,
+            referralBonus: this.referralBonus
+          });
+        } catch (error) {
+          console.error('Save Firestore error:', error);
+        }
+      }
+
+      updateUI() {
+        // Placeholder, will be called by BalanceSystem
+      }
+    }
+
+    // UI Manager
+    class UIManager {
+      constructor(elements) {
+        this.elements = elements;
+      }
+
+      formatMMK(value) {
+        return `${value.toLocaleString()} MMK`;
+      }
+
+      renderBalance(balance) {
+        this.elements.balance.textContent = this.formatMMK(balance);
+        this.elements.profileBalance.textContent = this.formatMMK(balance);
+      }
+
+      renderStats(stats) {
+        this.elements.totalTransactions.textContent = stats.totalTransactions;
+        this.elements.totalEarnings.textContent = this.formatMMK(stats.totalEarnings);
+        this.elements.adsWatched.textContent = stats.adsWatched;
+        this.elements.adEarnings.textContent = this.formatMMK(stats.adEarnings);
+        this.elements.profileTransactions.textContent = stats.totalTransactions;
+        this.elements.profileEarnings.textContent = this.formatMMK(stats.totalEarnings);
+        this.elements.profileReferrals.textContent = stats.referrals;
+        this.elements.referralBonus.textContent = this.formatMMK(stats.referralBonus);
+        this.elements.referralCount.textContent = stats.referrals;
+      }
+
+      renderProfile(userName, joinDate, referralCode) {
+        this.elements.profileName.textContent = userName;
+        this.elements.profileJoinDate.textContent = `Joined: ${joinDate}`;
+        this.elements.referralCode.value = referralCode;
+      }
+
+      renderHistory(history, filter) {
+        const filteredHistory = history.filter(item => filter === 'all' || item.type === filter);
+        this.elements.historyList.innerHTML = `<div class="history-header"><h3 class="history-title">Transaction History</h3><div class="history-filter"><button class="filter-btn ${filter === 'all' ? 'active' : ''}" data-filter="all">All</button><button class="filter-btn ${filter === 'withdraw' ? 'active' : ''}" data-filter="withdraw">Withdrawals</button></div></div>` +
+          (filteredHistory.length === 0 ? '<div class="history-item"><div class="history-details"><div class="history-info">No transactions yet</div></div></div>' : 
+          filteredHistory.map(item => `<div class="history-item"><div class="history-icon ${item.type}"><i class="fas fa-money-bill-wave"></i></div><div class="history-details"><div class="history-info">${item.method} (${item.comment})</div><div class="history-date">${this.formatTime(item.createdAt)}</div></div><div class="history-amount">-${item.amount.toLocaleString()} MMK</div></div>`).join(''));
+      }
+
+      renderNotifications(notifications, unreadCount) {
+        this.elements.notificationList.innerHTML = notifications.length === 0 
+          ? '<div class="notification-item"><div class="notification-message">No notifications</div></div>' 
+          : notifications.map(n => `<div class="notification-item ${n.read ? '' : 'unread'}" data-id="${n.id}"><div class="notification-icon"><i class="${n.icon || 'fas fa-info-circle'}"></i></div><div class="notification-details"><div class="notification-message">${n.message}</div><div class="notification-time">${this.formatTime(n.createdAt)}</div></div><button class="dismiss-btn"><i class="fas fa-times"></i></button></div>`).join('');
+        this.elements.unreadCount.textContent = unreadCount;
+        this.elements.progressFill.style.width = notifications.length > 0 ? `${(unreadCount / notifications.length) * 100}%` : '0%';
+        this.elements.notificationBell.classList.toggle('unread', unreadCount > 0);
+        this.elements.notificationTicker.textContent = `Notifications: ${notifications[0]?.message || 'Welcome to the Balance System!'}`;
+      }
+
+      showScreen(screen) {
+        const screens = { home: this.elements.homeScreen, withdraw: this.elements.withdrawScreen, profile: this.elements.profileScreen };
+        const buttons = { home: this.elements.homeBtn, withdraw: this.elements.withdrawBtn, profile: this.elements.profileBtn };
+        Object.values(screens).forEach(s => s.classList.add('hidden'));
+        Object.values(buttons).forEach(b => b.classList.remove('active'));
+        screens[screen].classList.remove('hidden');
+        buttons[screen].classList.add('active');
+        this.resetForm();
+      }
+
+      showModal(data) {
+        ['modalUserName', 'modalTime', 'modalTransactionId', 'modalType', 'modalMethod', 'modalDestination', 'modalComment'].forEach((id, i) => this.elements[id].textContent = [data.userName, this.formatTime(data.time), data.transactionId, data.type, data.method, data.destination, data.comment][i]);
+        this.elements.modalAmount.textContent = this.formatMMK(data.amount);
+        this.elements.modalBalance.textContent = this.formatMMK(data.balance);
+        this.elements.watermarkText.innerHTML = [`USER: ${data.userName}`, `TIME: ${this.formatTime(data.time)}`, `TXID: ${data.transactionId}`, `METHOD: ${data.method}`, `DEST: ${data.destination}`, `AMOUNT: ${data.amount}MMK`, `COMMENT: ${data.comment}`].map(line => `<span>${line}</span>`).join('<br>');
+        this.elements.withdrawModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      hideModal() {
+        this.elements.withdrawModal.style.display = 'none';
+        this.elements.confirmModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      toggleNotificationPanel(show) {
+        this.elements.notificationPanel.classList.toggle('hidden', !show);
+        this.elements.notificationPanel.classList.toggle('visible', show);
+      }
+
+      resetForm() {
+        ['kpayName', 'kpayNumber', 'kpayAmount', 'kpayComment', 'wavepayName', 'wavepayNumber', 'wavepayAmount', 'wavepayComment', 'phonebillNumber', 'phonebillComment'].forEach(id => this.elements[id].value = '');
+        this.elements.phoneBillButtons.forEach(btn => btn.classList.remove('active'));
+        this.elements.phoneBillTypeButtons.forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.form-group').forEach(group => group.classList.remove('invalid'));
+        this.elements.phonebillTypeError.parentElement.classList.remove('invalid');
+        this.elements.phonebillAmountError.parentElement.classList.remove('invalid');
+      }
+
+      formatTime(date) {
+        return new Date(date).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+      }
+    }
+
+    // Core Balance System
+    class BalanceSystem {
+      constructor() {
+        this.state = new State();
+        this.elements = this.cacheElements();
+        this.ui = new UIManager(this.elements);
+        this.state.updateUI = this.updateUI.bind(this);
+      }
+
+      cacheElements() {
+        const ids = ['balance', 'notificationBell', 'totalTransactions', 'totalEarnings', 'homeScreen', 'withdrawScreen', 'profileScreen', 'homeBtn', 'withdrawBtn', 'profileBtn', 'kpayName', 'kpayNumber', 'kpayAmount', 'kpayComment', 'wavepayName', 'wavepayNumber', 'wavepayAmount', 'wavepayComment', 'phonebillNumber', 'phonebillComment', 'confirmWithdraw', 'historyList', 'profileName', 'profileJoinDate', 'profileTransactions', 'profileEarnings', 'profileBalance', 'profileReferrals', 'referralCode', 'copyReferralBtn', 'referralBonus', 'referralCount', 'adsWatched', 'adEarnings', 'watchAdBtn', 'withdrawModal', 'modalUserName', 'modalTime', 'modalTransactionId', 'modalType', 'modalMethod', 'modalDestination', 'modalAmount', 'modalBalance', 'modalComment', 'kpayNameError', 'kpayNumberError', 'kpayAmountError', 'kpayCommentError', 'wavepayNameError', 'wavepayNumberError', 'wavepayAmountError', 'wavepayCommentError', 'phonebillNumberError', 'phonebillTypeError', 'phonebillAmountError', 'phonebillCommentError', 'watermarkText', 'cooldownTimer', 'notificationPanel', 'notificationList', 'closeNotifications', 'confirmNotifications', 'unreadCount', 'progressFill', 'notificationTicker', 'confirmModal', 'confirmYes', 'confirmNo'];
+        const elements = {};
+        ids.forEach(id => elements[id] = document.getElementById(id));
+        elements.paymentButtons = document.querySelectorAll('.payment-btn');
+        elements.phoneBillButtons = document.querySelectorAll('.phone-bill-btn');
+        elements.phoneBillTypeButtons = document.querySelectorAll('.phone-bill-type-btn');
+        elements.historyFilterButtons = document.querySelectorAll('.filter-btn');
+        elements.methodFields = { kpay: document.getElementById('kpayFields'), wavepay: document.getElementById('wavepayFields'), phonebill: document.getElementById('phonebillFields') };
+        elements.telegramLinks = document.querySelector('.telegram-links');
+        return elements;
+      }
+
+      async init() {
+        await this.state.init();
+        this.setupEventListeners();
+        this.handleReferral();
+        this.updateUI();
+        this.ui.showScreen(this.state.currentScreen);
+        await this.addNotification('မင်္ဂလာပါ! Balance System မှကြိုဆိုပါသည်။', 'fas fa-info-circle', 'info');
+      }
+
+      handleReferral() {
+        if (this.state.referredBy) {
+          this.addNotification(`Referred by ${this.state.referredBy}: ${CONFIG.REFERRAL_BONUS} MMK bonus pending`, 'fas fa-user-plus', 'info');
+        }
+      }
+
+      async addNotification(message, icon = 'fas fa-info-circle', type = 'info') {
+        try {
+          const notification = {
+            userId: this.state.userId,
+            message,
+            icon,
+            type,
+            read: false,
+            createdAt: new Date().toISOString()
+          };
+          const notifRef = await addDoc(collection(window.db, 'notifications'), notification);
+          this.state.notifications.unshift({ id: notifRef.id, ...notification });
+          this.state.unreadCount = this.state.notifications.filter(n => !n.read).length;
+          this.ui.renderNotifications(this.state.notifications, this.state.unreadCount);
+        } catch (error) {
+          console.error('Add notification error:', error);
+        }
+      }
+
+      async markNotificationRead(id) {
+        try {
+          await updateDoc(doc(window.db, 'notifications', id), { read: true });
+        } catch (error) {
+          console.error('Mark notification read error:', error);
+        }
+      }
+
+      async dismissNotification(id) {
+        try {
+          await updateDoc(doc(window.db, 'notifications', id), { deleted: true });
+          this.state.notifications = this.state.notifications.filter(n => n.id !== id);
+          this.state.unreadCount = this.state.notifications.filter(n => !n.read).length;
+          this.ui.renderNotifications(this.state.notifications, this.state.unreadCount);
+        } catch (error) {
+          console.error('Dismiss notification error:', error);
+        }
+      }
+
+      async markAllRead() {
+        try {
+          this.state.notifications.forEach(async n => {
+            if (!n.read) await updateDoc(doc(window.db, 'notifications', n.id), { read: true });
+          });
+          this.state.unreadCount = 0;
+          this.ui.renderNotifications(this.state.notifications, this.state.unreadCount);
+          this.ui.toggleNotificationPanel(false);
+        } catch (error) {
+          console.error('Mark all read error:', error);
+        }
+      }
+
+      async processWithdrawal() {
+        const method = this.state.selectedMethod;
+        let amount, name, number, comment, operator = '', isValid = true;
+
+        document.querySelectorAll('.form-group').forEach(group => group.classList.remove('invalid'));
+
+        if (method === 'phonebill') {
+          amount = this.state.selectedPhoneBillAmount;
+          number = this.elements.phonebillNumber.value.trim();
+          comment = this.elements.phonebillComment.value.trim();
+          operator = this.state.selectedPhoneBillType;
+
+          if (!number.match(/^09\d{9}$/)) {
+            this.elements.phonebillNumber.parentElement.classList.add('invalid');
+            isValid = false;
+          }
+          if (!operator) {
+            this.elements.phonebillTypeError.parentElement.classList.add('invalid');
+            isValid = false;
+          }
+          if (!amount || isNaN(amount)) {
+            this.elements.phonebillAmountError.textContent = 'ပမာဏ ရွေးချယ်ပါ';
+            this.elements.phonebillAmountError.parentElement.classList.add('invalid');
+            isValid = false;
+          }
+          if (amount > this.state.balance) {
+            this.elements.phonebillAmountError.textContent = 'လက်ကျန်ငွေ မလုံလောက်ပါ';
+            this.elements.phonebillAmountError.parentElement.classList.add('invalid');
+            isValid = false;
+          }
+          if (!comment) {
+            this.elements.phonebillComment.parentElement.classList.add('invalid');
+            isValid = false;
+          }
+        } else {
+          name = this.elements[`${method}Name`].value.trim();
+          number = this.elements[`${method}Number`].value.trim();
+          amount = parseFloat(this.elements[`${method}Amount`].value);
+          comment = this.elements[`${method}Comment`].value.trim();
+
+          if (!name) {
+            this.elements[`${method}Name`].parentElement.classList.add('invalid');
+            isValid = false;
+          }
+          if (!number.match(/^09\d{9}$/)) {
+            this.elements[`${method}Number`].parentElement.classList.add('invalid');
+            isValid = false;
+          }
+          if (isNaN(amount) || amount < CONFIG.MIN_WITHDRAWAL) {
+            this.elements[`${method}Amount`].parentElement.classList.add('invalid');
+            isValid = false;
+          }
+          if (amount > this.state.balance) {
+            this.elements[`${method}AmountError`].textContent = 'လက်ကျန်ငွေ မလုံလောက်ပါ';
+            this.elements[`${method}Amount`].parentElement.classList.add('invalid');
+            isValid = false;
+          }
+          if (!comment) {
+            this.elements[`${method}Comment`].parentElement.classList.add('invalid');
+            isValid = false;
+          }
+        }
+
+        if (!isValid) {
+          await this.addNotification('ကျေးဇူးပြု၍ အချက်အလက်များကို မှန်ကန်စွာ ဖြည့်ပါ။', 'fas fa-exclamation-circle', 'error');
+          return;
+        }
+
+        if (this.state.isProcessing) {
+          await this.addNotification('လောလောဆယ် ငွေထုတ်မရသေးပါ။ ခဏစောင့်ပါ။', 'fas fa-hourglass-half', 'warning');
+          return;
+        }
+
+        this.state.isProcessing = true;
+        this.elements.confirmWithdraw.disabled = true;
+        this.elements.confirmWithdraw.textContent = 'Processing...';
+
+        try {
+          const withdrawal = {
+            userId: this.state.userId,
+            amount,
+            method: this.capitalize(method === 'phonebill' ? `Phone Bill (${operator})` : method),
+            createdAt: new Date().toISOString(),
+            comment,
+            type: 'withdraw',
+            name: name || '',
+            number,
+            operator: operator || '',
+            status: 'pending'
+          };
+
+          const withdrawalRef = await addDoc(collection(window.db, 'withdrawals'), withdrawal);
+          this.state.balance -= amount;
+          this.state.totalTransactions++;
+
+          await this.state.saveToFirestore();
+          await this.addNotification(`Withdrawn ${amount} MMK via ${withdrawal.method}`, 'fas fa-money-bill-wave', 'withdraw');
+
+          const modalData = {
+            userName: this.state.username,
+            time: new Date(),
+            transactionId: withdrawalRef.id,
+            type: 'ငွေထုတ်ခြင်း',
+            method: withdrawal.method,
+            destination: method === 'phonebill' ? `${number} (${operator})` : `${name} (${number})`,
+            amount,
+            balance: this.state.balance,
+            comment
+          };
+          this.ui.showModal(modalData);
+          this.startCooldown();
+          this.ui.resetForm();
+        } catch (error) {
+          console.error('Withdrawal error:', error);
+          await this.addNotification(`အမှားဖြစ်သွားသည်: ${error.message}`, 'fas fa-exclamation-circle', 'error');
+        } finally {
+          this.state.isProcessing = false;
+          this.elements.confirmWithdraw.disabled = false;
+          this.elements.confirmWithdraw.textContent = 'Withdraw Now';
+        }
+      }
+
+      async watchAd() {
+        try {
+          this.state.adsWatched++;
+          this.state.adEarnings += CONFIG.AD_REWARD;
+          this.state.balance += CONFIG.AD_REWARD;
+          this.state.totalEarnings += CONFIG.AD_REWARD;
+          this.state.totalTransactions++;
+
+          await addDoc(collection(window.db, 'ad_earnings'), {
+            userId: this.state.userId,
+            amount: CONFIG.AD_REWARD,
+            adType: 'rewarded',
+            createdAt: new Date().toISOString()
+          });
+          await this.state.saveToFirestore();
+
+          await this.addNotification(`Earned ${CONFIG.AD_REWARD} MMK from ad`, 'fas fa-play-circle', 'win');
+          alert(`You earned ${CONFIG.AD_REWARD} MMK for watching an ad!`);
+        } catch (error) {
+          console.error('Ad watching error:', error);
+          await this.addNotification(`ကြော်ငြာမပြသနိုင်ပါ: ${error.message}`, 'fas fa-exclamation-circle', 'error');
+        }
+      }
+
+      async copyReferralLink() {
+        try {
+          const link = `${window.location.origin}${window.location.pathname}?ref=${this.state.referralCode}`;
+          await navigator.clipboard.writeText(link);
+          await this.addNotification('Referral link copied successfully!', 'fas fa-link', 'success');
+        } catch (error) {
+          console.error('Copy error:', error);
+          await this.addNotification(`Failed to copy referral link: ${error.message}`, 'fas fa-exclamation-circle', 'error');
+        }
+      }
+
+      startCooldown() {
+        let timeLeft = CONFIG.COOLDOWN_DURATION;
+        this.state.isCooldownActive = true;
+        this.elements.cooldownTimer.textContent = `Waiting: ${timeLeft}s`;
+        this.elements.cooldownTimer.classList.add('disabled');
+        this.elements.telegramLinks.style.pointerEvents = 'none';
+        this.cooldownInterval = setInterval(() => {
+          timeLeft--;
+          this.elements.cooldownTimer.textContent = `Waiting: ${timeLeft}s`;
+          if (timeLeft <= 0) {
+            clearInterval(this.cooldownInterval);
+            this.state.isCooldownActive = false;
+            this.elements.cooldownTimer.textContent = 'Cooldown Complete!';
+            this.elements.cooldownTimer.classList.remove('disabled');
+            this.elements.telegramLinks.style.pointerEvents = 'auto';
+          }
+        }, 1000);
+      }
+
+      updateUI() {
+        this.ui.renderBalance(this.state.balance);
+        this.ui.renderStats({
+          totalTransactions: this.state.totalTransactions,
+          totalEarnings: this.state.totalEarnings,
+          adsWatched: this.state.adsWatched,
+          adEarnings: this.state.adEarnings,
+          referrals: this.state.referrals,
+          referralBonus: this.state.referralBonus
+        });
+        this.ui.renderProfile(this.state.username, this.state.joinDate, this.state.referralCode);
+        this.ui.renderHistory(this.state.history, this.state.historyFilter);
+        this.ui.renderNotifications(this.state.notifications, this.state.unreadCount);
+      }
+
+      switchPaymentMethod(method) {
+        this.state.selectedMethod = method;
+        this.state.selectedPhoneBillAmount = null;
+        this.state.selectedPhoneBillType = null;
+        this.elements.paymentButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.method === method));
+        Object.values(this.elements.methodFields).forEach(field => field.classList.add('hidden'));
+        this.elements.methodFields[method].classList.remove('hidden');
+        this.ui.resetForm();
+      }
+
+      selectPhoneBillAmount(amount) {
+        this.state.selectedPhoneBillAmount = parseInt(amount);
+        this.elements.phoneBillButtons.forEach(btn => btn.classList.toggle('active', parseInt(btn.dataset.amount) === this.state.selectedPhoneBillAmount));
+        this.elements.phonebillAmountError.parentElement.classList.remove('invalid');
+      }
+
+      selectPhoneBillType(type) {
+        this.state.selectedPhoneBillType = type;
+        this.elements.phoneBillTypeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.type === type));
+        this.elements.phonebillTypeError.parentElement.classList.remove('invalid');
+      }
+
+      setHistoryFilter(filter) {
+        this.state.historyFilter = filter;
+        this.elements.historyFilterButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
+        this.ui.renderHistory(this.state.history, filter);
+      }
+
+      capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+      setupEventListeners() {
+        this.elements.homeBtn.onclick = () => this.ui.showScreen('home');
+        this.elements.withdrawBtn.onclick = () => this.ui.showScreen('withdraw');
+        this.elements.profileBtn.onclick = () => this.ui.showScreen('profile');
+        this.elements.confirmWithdraw.onclick = () => this.processWithdrawal();
+        this.elements.copyReferralBtn.onclick = () => this.copyReferralLink();
+        this.elements.watchAdBtn.onclick = () => this.watchAd();
+        this.elements.notificationBell.onclick = () => this.ui.toggleNotificationPanel(true);
+        this.elements.closeNotifications.onclick = () => this.ui.toggleNotificationPanel(false);
+        this.elements.confirmNotifications.onclick = () => this.markAllRead();
+        this.elements.paymentButtons.forEach(btn => btn.onclick = () => this.switchPaymentMethod(btn.dataset.method));
+        this.elements.phoneBillButtons.forEach(btn => btn.onclick = () => this.selectPhoneBillAmount(btn.dataset.amount));
+        this.elements.phoneBillTypeButtons.forEach(btn => btn.onclick = () => this.selectPhoneBillType(btn.dataset.type));
+        this.elements.historyFilterButtons.forEach(btn => btn.onclick = () => this.setHistoryFilter(btn.dataset.filter));
+        this.elements.withdrawModal.onclick = e => {
+          if (e.target === this.elements.withdrawModal && !this.state.isCooldownActive) {
+            this.elements.confirmModal.style.display = 'flex';
+          }
+        };
+        this.elements.confirmYes.onclick = () => this.ui.hideModal();
+        this.elements.confirmNo.onclick = () => this.elements.confirmModal.style.display = 'none';
+        this.elements.confirmModal.onclick = e => {
+          if (e.target === this.elements.confirmModal) this.elements.confirmModal.style.display = 'none';
+        };
+        ['kpayName', 'kpayNumber', 'kpayAmount', 'kpayComment', 'wavepayName', 'wavepayNumber', 'wavepayAmount', 'wavepayComment', 'phonebillNumber', 'phonebillComment'].forEach(id => 
+          this.elements[id].onfocus = () => this.elements[id].parentElement.classList.remove('invalid'));
+        this.elements.notificationList.addEventListener('click', async (e) => {
+          const item = e.target.closest('.notification-item');
+          if (item) {
+            const id = item.dataset.id;
+            if (e.target.closest('.dismiss-btn')) {
+              await this.dismissNotification(id);
+            } else {
+              await this.markNotificationRead(id);
+            }
+          }
+        });
+      }
+    }
+
+    // Initialize the app
+    document.addEventListener('DOMContentLoaded', () => {
+      const system = new BalanceSystem();
+      system.init();
+    });
+  </script>
+</body>
+</html>
