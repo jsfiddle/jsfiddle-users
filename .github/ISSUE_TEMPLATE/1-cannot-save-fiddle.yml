@@ -1,5 +1,5 @@
 name: 🤖 Cannot save fiddle
-description: IMPORTANT: Report with no code provided will be removed.
+description: "IMPORTANT: Report with no code provided will be removed."
 title: "🤖 Cannot save fiddle"
 labels: ["task"]
 body:
