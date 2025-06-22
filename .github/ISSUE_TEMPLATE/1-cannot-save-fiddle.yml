@@ -36,7 +36,7 @@ body:
         <p>...</p>
       render: html
     validations:
-      required: false
+      required: true
   - type: textarea
     id: javascript
     attributes:
@@ -48,16 +48,16 @@ body:
         }
       render: javascript
     validations:
-      required: false
+      required: true
   - type: textarea
     id: css
     attributes:
       label: Your CSS
-      description: You have to provide at least one of HTML, CSS or JavaScript
+      description: "Put '-' for no code."
       placeholder: |
         p {
           color: rgba(0, 0, 0, 0.1);
         }
       render: css
     validations:
-      required: false
+      required: true
